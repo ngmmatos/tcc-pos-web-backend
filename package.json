@@ -1,0 +1,27 @@
+{
+  "name": "tcc-pos-web-backend",
+  "version": "1.0.0",
+  "description": "backend/ api rh barbearia",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint api --fix",
+    "start": "nodemon ./api/index.js \"npm run lint\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ngmmatos/tcc-pos-web-backend.git"
+  },
+  "author": "Natã Matos",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ngmmatos/tcc-pos-web-backend/issues"
+  },
+  "homepage": "https://github.com/ngmmatos/tcc-pos-web-backend#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mysql2": "^2.3.2",
+    "nodemon": "^2.0.14",
+    "sequelize": "^6.8.0"
+  }
+}
