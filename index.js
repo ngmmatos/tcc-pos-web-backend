@@ -1,5 +1,7 @@
 const express = require("express");
 const cors = require("cors");
+const swaggerUi = require("swagger-ui-express");
+const swaggerFile = require('./swagger/swagger_output.json');
 
 const app = express();
 
@@ -22,6 +24,8 @@ db.sequelize.sync();
 app.get("/", (req, res) => {
   res.json({ message: "Bem vindo a api rh barbearia." });
 });
+
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 // set port, listen for requests
 require("./app/routes/usuario.routes")(app);

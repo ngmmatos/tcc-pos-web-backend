@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint api --fix",
-    "start": "nodemon ./api/index.js \"npm run lint\""
+    "start": "nodemon ./api/index.js \"npm run lint\"",
+    "swagger-autogen": "node swagger.js"
   },
   "repository": {
     "type": "git",
@@ -22,6 +23,8 @@
     "express": "^4.17.1",
     "mysql2": "^2.3.2",
     "nodemon": "^2.0.14",
-    "sequelize": "^6.8.0"
+    "sequelize": "^6.8.0",
+    "swagger-autogen": "^2.12.3",
+    "swagger-ui-express": "^4.1.6"
   }
 }
