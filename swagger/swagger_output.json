@@ -5,8 +5,8 @@
     "title": "REST API",
     "description": ""
   },
-  "host": "localhost:8080/api/usuario",
-  "basePath": "/",
+  "host": "localhost:8080",
+  "basePath": "/api/usuario",
   "tags": [],
   "schemes": [
     "http"
@@ -22,6 +22,43 @@
           {
             "name": "nome",
             "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "cpf",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "email",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "telefone",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "sexo",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "senha",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "default" : "ASC",
+            "type": "string"
+          },
+          {
+            "name": "orderBy",
+            "in": "query",
+            "default" : "id_usuario",
             "type": "string"
           }
         ],
@@ -42,6 +79,9 @@
               "type": "object",
               "properties": {
                 "nome": {
+                  "example": "any"
+                },
+                "cpf": {
                   "example": "any"
                 },
                 "email": {
@@ -67,18 +107,6 @@
           "400": {
             "description": "Bad Request"
           },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/nome": {
-      "get": {
-        "tags": [],
-        "description": "",
-        "parameters": [],
-        "responses": {
           "500": {
             "description": "Internal Server Error"
           }

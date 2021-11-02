@@ -25,7 +25,7 @@ app.get("/", (req, res) => {
   res.json({ message: "Bem vindo a api rh barbearia." });
 });
 
-app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
+app.use('/RhBarbearia', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 // set port, listen for requests
 require("./app/routes/usuario.routes")(app);
