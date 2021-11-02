@@ -21,16 +21,16 @@ const db = require("./app/models");
 db.sequelize.sync();
 
 // simple route
-app.get("/", (req, res) => {
-  res.json({ message: "Bem vindo a api rh barbearia." });
-});
+// app.get("/", (req, res) => {
+//   res.json({ message: "Bem vindo a api rh barbearia." });
+// });
 
-app.use('/RhBarbearia', swaggerUi.serve, swaggerUi.setup(swaggerFile));
+app.use('/SwaggerRhBarbearia', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 // set port, listen for requests
 require("./app/routes/usuario.routes")(app);
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}.`);
+  console.log(`Servidor rodando ${PORT}.`);
 });

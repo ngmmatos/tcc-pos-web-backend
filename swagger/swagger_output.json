@@ -6,7 +6,7 @@
     "description": ""
   },
   "host": "localhost:8080",
-  "basePath": "/api/usuario",
+  "basePath": "/RhBarbearia/",
   "tags": [],
   "schemes": [
     "http"
@@ -14,7 +14,7 @@
   "consumes": [],
   "produces": [],
   "paths": {
-    "/": {
+    "/usuario": {
       "get": {
         "tags": [],
         "description": "",
@@ -113,7 +113,7 @@
         }
       }
     },
-    "/{id_usuario}": {
+    "/usuario/{id_usuario}": {
       "get": {
         "tags": [],
         "description": "",
