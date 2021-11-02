@@ -12,41 +12,6 @@ exports.create = (req, res) => {
   //   return;
   // }
 
-  // if (!req.body.email) {
-  //   res.status(400).send({
-  //     message: "Email não pode ser vazio!"
-  //   });
-  //   return;
-  // }
-
-  // if (!req.body.senha) {
-  //   res.status(400).send({
-  //     message: "Senha não pode ser vazio!"
-  //   });
-  //   return;
-  // }
-
-  // if (!req.body.data_nascimento) {
-  //   res.status(400).send({
-  //     message: "Data de nascimento não pode ser vazio!"
-  //   });
-  //   return;
-  // }
-
-  // if (!req.body.sexo) {
-  //   res.status(400).send({
-  //     message: "Sexo não pode ser vazio!"
-  //   });
-  //   return;
-  // }
-
-  // if (!req.body.telefone) {
-  //   res.status(400).send({
-  //     message: "Telefone não pode ser vazio!"
-  //   });
-  //   return;
-  // }
-  // Create a Tutorial
   const usuario = {
     nome: req.body.nome,
     email: req.body.email,
@@ -55,7 +20,6 @@ exports.create = (req, res) => {
     telefone: req.body.telefone,
     sexo: req.body.sexo,
     cpf: req.body.cpf,
-    // sexo: req.body.published ? req.body.published : false
   };
 
   // Save Tutorial in the database
@@ -66,7 +30,7 @@ exports.create = (req, res) => {
     .catch(err => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while creating the Tutorial."
+          err.message || "Algum erro ocorreu ao na tentativa de criação de um usuário."
       });
     });
 };
@@ -122,13 +86,13 @@ exports.findOne = (req, res) => {
         res.send(data);
       } else {
         res.status(404).send({
-          message: `Cannot find Tutorial with id=${id}.`
+          message: `Não localizado usuário com id=${id}.`
         });
       }
     })
     .catch(err => {
       res.status(500).send({
-        message: "Error retrieving Tutorial with id=" + id
+        message: `Erro tentando localizar usuario id=${id}.`
       });
     });
 };
@@ -146,8 +110,8 @@ exports.update = (req, res) => {
           message: "Usuario was updated successfully."
         });
       } else {
-        res.send({
-          message: `Cannot update Usuario with id=${id}. Maybe Tutorial was not found or req.body is empty!`
+        res.status(404).send({
+          message: `Não localizado usuário com id=${id}.`
         });
       }
     })
@@ -168,31 +132,18 @@ exports.delete = (req, res) => {
     .then(num => {
       if (num == 1) {
         res.send({
-          message: "Usuario was deleted successfully!"
+          message: "Usuario deletado com sucesso!"
         });
       } else {
-        res.send({
-          message: `Cannot delete Usuario with id=${id}. Maybe Usuario was not found!`
+        res.status(404).send({
+          message: `Não localizado usuário com id=${id}.`
         });
       }
     })
     .catch(err => {
       res.status(500).send({
-        message: "Could not delete Usuario with id=" + id
+        message: `Erro ao deletar usuario=${id}`
       });
     });
 };
 
-// Find all published Tutorials
-// exports.findAllNome = (req, res) => {
-//   Usuario.findAll({ where: { nome: "Renan Marcelo" } })
-//     .then(data => {
-//       res.send(data);
-//     })
-//     .catch(err => {
-//       res.status(500).send({
-//         message:
-//           err.message || "Some error occurred while retrieving tutorials."
-//       });
-//     });
-// };

@@ -139,6 +139,36 @@
         "description": "",
         "parameters": [
           {
+            "name": "obj",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nome": {
+                  "example": "any"
+                },
+                "cpf": {
+                  "example": "any"
+                },
+                "email": {
+                  "example": "any"
+                },
+                "senha": {
+                  "example": "any"
+                },
+                "data_nascimento": {
+                  "example": "any"
+                },
+                "telefone": {
+                  "example": "any"
+                },
+                "sexo": {
+                  "example": "any"
+                }
+              }
+            }
+          },
+          {
             "name": "id_usuario",
             "in": "path",
             "required": true,
