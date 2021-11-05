@@ -29,6 +29,9 @@ app.use('/SwaggerRhBarbearia', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 // set port, listen for requests
 require("./app/routes/usuario.routes")(app);
+require("./app/routes/administrador.routes")(app);
+require("./app/routes/cliente.routes")(app);
+require("./app/routes/barbeiro.routes")(app);
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {

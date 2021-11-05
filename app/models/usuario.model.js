@@ -90,5 +90,16 @@ module.exports = (sequelize, Sequelize) => {
     timestamps: false,
     freezeTableName: true
   });
+    Usuario.associate = function(models) {
+    Usuario.belongsTo(models.Cliente, {
+      foreignKey: 'id_cliente'
+    }) 
+    Usuario.belongsTo(models.Barbeiro, {
+      foreignKey: 'id_barbeiro'
+    })
+    Usuario.belongsTo(models.Administrador, {
+      foreignKey: 'id_adm'
+    })
+  }
   return Usuario;
 };
