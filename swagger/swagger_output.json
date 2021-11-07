@@ -350,7 +350,7 @@
         "description": "",
         "parameters": [
           {
-            "name": "id_adm",
+            "name": "id_cliente",
             "in": "path",
             "required": true,
             "type": "string"
