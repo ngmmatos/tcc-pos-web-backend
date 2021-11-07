@@ -1,6 +1,8 @@
 const db = require("../models");
 const Barbeiro = db.barbeiro;
+const Usuario = db.usuario;
 const Op = db.Sequelize.Op;
+Barbeiro.associate({Usuario});
 
 // Create and Save a new Tutorial
 exports.create = (req, res) => {
@@ -41,7 +43,8 @@ exports.findAll = (req, res) => {
     [Op.and]: [conditionIdAdm, conditionIdUsuario]
   },
   order: [[`${orderBy}`, `${order}`]],
-  limit: req.query.rows
+  limit: req.query.rows,
+  include: { model: Usuario }
   })
     .then(data => {
       res.send(data);
@@ -58,7 +61,7 @@ exports.findAll = (req, res) => {
 exports.findOne = (req, res) => {
   const id = req.params.id_barbeiro;
 
-  Barbeiro.findByPk(id)
+  Barbeiro.findByPk(id, {include: { model: Usuario }})
     .then(data => {
       if (data) {
         res.send(data);

@@ -95,11 +95,11 @@ module.exports = (sequelize, Sequelize) => {
       foreignKey: 'id_usuario',
       sourceKey: 'id_cliente'
     }) 
-    Usuario.belongsTo(models.Barbeiro, {
+    Usuario.hasOne(models.Barbeiro, {
       foreignKey: 'id_usuario',
       sourceKey: 'id_barbeiro'
     })
-    Usuario.belongsTo(models.Administrador, {
+    Usuario.hasOne(models.Administrador, {
       foreignKey: 'id_usuario',
       sourceKey: 'id_adm'
     })
