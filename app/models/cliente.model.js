@@ -21,5 +21,10 @@ module.exports = (sequelize, Sequelize) => {
     timestamps: false,
     freezeTableName: true
   });
+  Cliente.associate = function(models) {
+    Cliente.belongsTo(models.Usuario, {
+      foreignKey: 'id_usuario'
+    });
+    };
   return Cliente;
 };
