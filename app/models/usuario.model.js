@@ -69,7 +69,7 @@ module.exports = (sequelize, Sequelize) => {
       }
     },
     data_nascimento: {
-      type: Sequelize.STRING,
+      type: Sequelize.INTEGER,
       allowNull: false,
       validate: {
         notEmpty: {
