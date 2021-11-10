@@ -463,7 +463,152 @@
           }
         }
       }
-    }
+    },
+    "/agenda": {
+      "post": {
+        "tags": ["agenda"],
+        "description": "",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id_barbeiro": {
+                  "example": "any"
+                },
+                "data": {
+                  "example": "any"
+                },
+                "periodo": {
+                  "example": "any"
+                },
+                "hr_inicio": {
+                  "example": "any"
+                },
+                "hr_fim": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "get": {
+        "tags": ["agenda"],
+        "description": "",
+        "parameters": [
+          {
+            "id_barbeiro": "id_barbeiro",
+            "in": "query",
+            "type": "integer"
+          },
+          {
+            "data": "data",
+            "in": "query",
+            "type": "integer"
+          },
+          {
+            "periodo": "periodo",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "hr_inicio": "hora inicio",
+            "in": "query",
+            "type": "integer"
+          },
+          {
+            "hr_fim": "hora fim",
+            "in": "query",
+            "type": "integer"
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "orderBy",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/agenda/{id_agenda}": {
+      "get": {
+        "tags": ["agenda"],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id_agenda",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": ["agenda"],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id_agenda",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["agenda"],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id_agenda",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }  
   },
   "definitions": {}
 }

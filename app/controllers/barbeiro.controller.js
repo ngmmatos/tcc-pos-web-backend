@@ -1,16 +1,13 @@
 const db = require("../models");
-const Barbeiro = db.barbeiro;
-const Usuario = db.usuario;
+const Barbeiro = db.Barbeiro;
+const Usuario = db.Usuario;
 const Op = db.Sequelize.Op;
-Barbeiro.associate({Usuario});
 
-// Create and Save a new Tutorial
 exports.create = (req, res) => {
   const barbeiro = {
     id_usuario: req.body.id_usuario,
   };
 
-  // Save Tutorial in the database
   Barbeiro.create(barbeiro)
     .then(data => {
       res.send(data);
@@ -23,8 +20,6 @@ exports.create = (req, res) => {
     });
 };
 
-
-// Retrieve all Tutorials from the database.
 exports.findAll = (req, res) => {
   const id_barbeiro = req.query.id_barbeiro;
   const id_usuario = req.query.id_usuario;
@@ -78,7 +73,6 @@ exports.findOne = (req, res) => {
     });
 };
 
-// Delete a Tutorial with the specified id in the request
 exports.delete = (req, res) => {
   const id = req.params.id_barbeiro;
 

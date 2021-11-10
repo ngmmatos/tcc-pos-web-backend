@@ -90,19 +90,17 @@ module.exports = (sequelize, Sequelize) => {
     timestamps: false,
     freezeTableName: true
   });
-    Usuario.associate = function(models) {
+    Usuario.associate = (models) => {
     Usuario.hasOne(models.Cliente, {
-      foreignKey: 'id_usuario',
-      sourceKey: 'id_cliente'
+      foreignKey: 'id_usuario'
     }) 
     Usuario.hasOne(models.Barbeiro, {
-      foreignKey: 'id_usuario',
-      sourceKey: 'id_barbeiro'
+      foreignKey: 'id_usuario'
     })
     Usuario.hasOne(models.Administrador, {
-      foreignKey: 'id_usuario',
-      sourceKey: 'id_adm'
+      foreignKey: 'id_usuario'
     })
   }
+  
   return Usuario;
 };

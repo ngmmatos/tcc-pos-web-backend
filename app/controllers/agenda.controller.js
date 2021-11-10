@@ -1,19 +1,9 @@
 const db = require("../models");
-const Agenda = db.agenda;
+const Agenda = db.Agenda;
+const Barbeiro = db.Barbeiro;
 const Op = db.Sequelize.Op;
-const Barbeiro = db.barbeiro;
-Agenda.associate({Barbeiro});
 
-// Create and Save a new Tutorial
 exports.create = (req, res) => {
-  // Validate request
-  // if (!req.body.nome) {
-  //   res.status(400).send({
-  //     message: "Nome não pode ser vazio!"
-  //   });
-  //   return;
-  // }
-
   const agenda = {
     id_barbeiro: req.body.id_barbeiro,
     data: req.body.data,
@@ -22,7 +12,6 @@ exports.create = (req, res) => {
     hr_fim: req.body.hr_fim
   };
 
-  // Save Tutorial in the database
   Agenda.create(agenda)
     .then(data => {
       res.send(data);
@@ -35,8 +24,6 @@ exports.create = (req, res) => {
     });
 };
 
-
-// Retrieve all Tutorials from the database.
 exports.findAll = (req, res) => {
   const id_barbeiro = req.query.id_barbeiro;
   const data = req.query.data;
@@ -62,7 +49,7 @@ exports.findAll = (req, res) => {
   },
   order: [[`${orderBy}`, `${order}`]],
   limit: req.query.rows,
-  include: { model: Barbeiro }
+  include: { model: Barbeiro}
   })
     .then(data => {
       res.send(data);

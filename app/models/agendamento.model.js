@@ -58,11 +58,10 @@ module.exports = (sequelize, Sequelize) => {
     timestamps: false,
     freezeTableName: true
   });
-    Agendamento.associate = function(models) {
-    Agendamento.hasOne(models.Cliente, {
-      foreignKey: 'id_agendamento',
-      sourceKey: 'id_cliente'
-    }) 
-  }
+  //   Agendamento.associate = (models) => {
+  //   Agendamento.hasOne(models.Cliente, {
+  //     foreignKey: 'id_agendamento'
+  //   }) 
+  // }
   return Agendamento;
 };

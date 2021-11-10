@@ -21,7 +21,7 @@ module.exports = (sequelize, Sequelize) => {
     timestamps: false,
     freezeTableName: true
   });
-  Administrador.associate = function(models) {
+  Administrador.associate = (models) => {
     Administrador.belongsTo(models.Usuario, {
       foreignKey: 'id_usuario'
     });

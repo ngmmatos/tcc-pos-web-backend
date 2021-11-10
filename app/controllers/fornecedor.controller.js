@@ -1,55 +1,45 @@
 const db = require("../models");
-const Usuario = db.Usuario;
+const Fornecedor = db.Fornecedor;
 const Op = db.Sequelize.Op;
 
 exports.create = (req, res) => {
 
-  const usuario = {
-    nome: req.body.nome,
-    email: req.body.email,
-    senha: req.body.senha,
-    data_nascimento: req.body.data_nascimento,
+  const fornecedor = {
     telefone: req.body.telefone,
-    sexo: req.body.sexo,
-    cpf: req.body.cpf,
+    fornecedor: req.body.fornecedor,
+    email: req.body.email,
   };
 
-  Usuario.create(usuario)
+  Fornecedor.create(fornecedor)
     .then(data => {
       res.send(data);
     })
     .catch(err => {
       res.status(500).send({
         message:
-          err.message || "Algum erro ocorreu ao na tentativa de criação de um usuário."
+          err.message || "Algum erro ocorreu ao na tentativa de criação de um fornecedor."
       });
     });
 };
 
 exports.findAll = (req, res) => {
-  const nome = req.query.nome;
+  const fornecedor = req.query.fornecedor;
   const email = req.query.email;
   const telefone = req.query.telefone;
-  const sexo = req.query.sexo;
-  const senha = req.query.senha;
-  const cpf = req.query.cpf;
   var order = req.query.order;
   var orderBy= req.query.orderBy
 
   if (order === undefined)
     order = 'ASC'
   if (orderBy === undefined)
-    orderBy = 'id_usuario'
+    orderBy = 'id_fornecedor'
 
-  var conditionNome = nome ? { nome: { [Op.like]: `%${nome}%` } } : null;
+  var conditionFornecedor = fornecedor ? { fornecedor: { [Op.like]: `%${fornecedor}%` } } : null;
   var conditionEmail = email ? { email: { [Op.eq]: `${email}` } } : null;
   var conditionTelefone = telefone ? { telefone: { [Op.like]: `%${telefone}%` } } : null;
-  var conditionSexo = sexo ? { sexo: { [Op.like]: `%${sexo}%` } } : null;
-  var conditionSenha = senha ? { senha: { [Op.eq]: `${senha}` } } : null;
-  var conditionCpf = cpf ? { cpf: { [Op.eq]: `${cpf}` } } : null;
 
-  Usuario.findAll({ where: {
-    [Op.and]: [conditionNome, conditionEmail, conditionTelefone, conditionSexo, conditionSenha, conditionCpf]
+  Fornecedor.findAll({ where: {
+    [Op.and]: [conditionFornecedor, conditionEmail, conditionTelefone]
   },
   order: [[`${orderBy}`, `${order}`]],
   limit: req.query.rows
@@ -66,69 +56,69 @@ exports.findAll = (req, res) => {
 };
 
 exports.findOne = (req, res) => {
-  const id = req.params.id_usuario;
+  const id = req.params.id_fornecedor;
 
-  Usuario.findByPk(id)
+  Fornecedor.findByPk(id)
     .then(data => {
       if (data) {
         res.send(data);
       } else {
         res.status(404).send({
-          message: `Não localizado usuário com id=${id}.`
+          message: `Não localizado fornecedor com id=${id}.`
         });
       }
     })
     .catch(err => {
       res.status(500).send({
-        message: `Erro tentando localizar usuario id=${id}.`
+        message: `Erro tentando localizar fornecedor id=${id}.`
       });
     });
 };
 
 exports.update = (req, res) => {
-  const id = req.params.id_usuario;
+  const id = req.params.id_fornecedor;
 
-  Usuario.update(req.body, {
-    where: { id_usuario: id }
+  Fornecedor.update(req.body, {
+    where: { id_fornecedor: id }
   })
     .then(num => {
       if (num == 1) {
         res.send({
-          message: "Usuario atualizado com sucesso."
+          message: "Fornecedor atualizado com sucesso."
         });
       } else {
         res.status(404).send({
-          message: `Não localizado usuário com id=${id}.`
+          message: `Não localizado fornecedor com id=${id}.`
         });
       }
     })
     .catch(err => {
       res.status(500).send({
-        message: "Error updating Usuario with id=" + id
+        message: "Error updating Fornecedor with id=" + id
       });
     });
 };
 
 exports.delete = (req, res) => {
-  const id = req.params.id_usuario;
+  const id = req.params.id_fornecedor;
 
-  Usuario.destroy({
-    where: { id_usuario: id }
+  Fornecedor.destroy({
+    where: { id_fornecedor: id }
   })
     .then(num => {
       if (num == 1) {
         res.send({
-          message: "Usuario deletado com sucesso!"
+          message: "Fornecedor deletado com sucesso!"
         });
       } else {
         res.status(404).send({
-          message: `Não localizado usuário com id=${id}.`
+          message: `Não localizado fornecedor com id=${id}.`
         });
       }
     })
     .catch(err => {
       res.status(500).send({
-        message: `Erro ao deletar usuario=${id}`
+        message: `Erro ao deletar fornecedor=${id}`
       });
     });
 };

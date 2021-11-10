@@ -1,24 +1,14 @@
 const db = require("../models");
-const Cliente = db.cliente;
-const Usuario = db.usuario;
+const Cliente = db.Cliente;
+const Usuario = db.Usuario;
 const Op = db.Sequelize.Op;
-Cliente.associate({Usuario});
 
-// Create and Save a new Tutorial
 exports.create = (req, res) => {
-  // Validate request
-  // if (!req.body.nome) {
-  //   res.status(400).send({
-  //     message: "Nome não pode ser vazio!"
-  //   });
-  //   return;
-  // }
 
   const cliente = {
     id_usuario: req.body.id_usuario,
   };
 
-  // Save Tutorial in the database
   Cliente.create(cliente)
     .then(data => {
       res.send(data);
@@ -31,8 +21,6 @@ exports.create = (req, res) => {
     });
 };
 
-
-// Retrieve all Tutorials from the database.
 exports.findAll = (req, res) => {
   const id_cliente = req.query.id_cliente;
   const id_usuario = req.query.id_usuario;
@@ -65,7 +53,6 @@ exports.findAll = (req, res) => {
     });
 };
 
-// Find a single Tutorial with an id
 exports.findOne = (req, res) => {
   const id = req.params.id_cliente;
 
@@ -86,7 +73,6 @@ exports.findOne = (req, res) => {
     });
 };
 
-// Delete a Tutorial with the specified id in the request
 exports.delete = (req, res) => {
   const id = req.params.id_cliente;
 

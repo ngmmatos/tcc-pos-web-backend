@@ -31,10 +31,10 @@ module.exports = (sequelize, Sequelize) => {
       unique: true,
       validate: {
         notEmpty: {
-          msg: "Campo email não pode ser vazio"
+          msg: "Campo periodo não pode ser vazio"
         },
         isIn: {
-          args: [["manhã", "tarde", "noite"]],
+          args: [["manha", "tarde", "noite"]],
           msg: "Campo periodo aceita valores: manhã, tarde e noite"
         }
       }
@@ -44,20 +44,16 @@ module.exports = (sequelize, Sequelize) => {
       allowNull: false,
       validate: {
         notEmpty: {
-          msg: "Campo sexo não pode ser vazio"
-        },
-        isIn: {
-          args: [["m", "M", "f", "F"]],
-          msg: "Campo sexo aceita valores m(M) ou f(F)"
+          msg: "Campo hr_inicio não pode ser vazio"
         }
-      }
+        }
     },
     hr_fim: {
       type: Sequelize.INTEGER,
       allowNull: false,
       validate: {
         notEmpty: {
-          msg: "Campo senha não pode ser vazio"
+          msg: "Campo hr_fim não pode ser vazio"
         }
       }
     },
@@ -65,11 +61,10 @@ module.exports = (sequelize, Sequelize) => {
     timestamps: false,
     freezeTableName: true
   });
-    Agenda.associate = function(models) {
-    Agenda.hasOne(models.Cliente, {
-      foreignKey: 'id_agenda',
-      sourceKey: 'id_cliente'
-    }) 
-  }
+    Agenda.associate = (models) => {
+    Agenda.belongsTo(models.Barbeiro, {
+      foreignKey: 'id_barbeiro'
+    });
+  };
   return Agenda;
 };

@@ -21,10 +21,12 @@ module.exports = (sequelize, Sequelize) => {
     timestamps: false,
     freezeTableName: true
   });
-  Barbeiro.associate = function(models) {
-    Barbeiro.hasMany(models.Agenda, {
-      foreignKey: 'id_barbeiro'
-    });
-    };
+  Barbeiro.associate = (models) => {
+  Barbeiro.hasMany(models.Agenda,
+    { foreignKey: 'id_barbeiro' });
+  Barbeiro.belongsTo(models.Usuario, 
+  { foreignKey: 'id_usuario' });
+  };
+    
   return Barbeiro;
 };
