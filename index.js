@@ -28,6 +28,9 @@ require("./app/routes/barbeiro.routes")(app);
 require("./app/routes/agendamento.routes")(app);
 require("./app/routes/fornecedor.routes")(app);
 require("./app/routes/insumo.routes")(app);
+require("./app/routes/procedimento.routes")(app);
+require("./app/routes/insumoProcedimento.routes")(app);
+require("./app/routes/procedimentoAgendamento.routes")(app);
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
