@@ -34,17 +34,14 @@ module.exports = (sequelize, Sequelize) => {
           }
         }
       }
-      },
-    {
+      },{
     timestamps: false,
     freezeTableName: true
   });
-  // Fornecedor.associate = (models) => {
-  // Fornecedor.hasMany(models.Agenda,
-  //   { foreignKey: 'id_fornecedor' });
-  // Fornecedor.belongsTo(models.Usuario, 
-  // { foreignKey: 'id_usuario' });
-  // };
+    Fornecedor.associate = (models) => {
+    Fornecedor.hasMany(models.Insumo, 
+      { foreignKey: 'id_fornecedor' });
+  };
     
   return Fornecedor;
 };

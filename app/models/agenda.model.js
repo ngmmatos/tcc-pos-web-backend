@@ -21,7 +21,7 @@ module.exports = (sequelize, Sequelize) => {
       allowNull: false,
       validate: {
         notEmpty: {
-          msg: "Campo cpf não pode ser vazio"
+          msg: "Campo data não pode ser vazio"
         }
       }
     },
@@ -57,13 +57,16 @@ module.exports = (sequelize, Sequelize) => {
         }
       }
     },
-  }, {
+  },{
     timestamps: false,
     freezeTableName: true
   });
     Agenda.associate = (models) => {
     Agenda.belongsTo(models.Barbeiro, {
       foreignKey: 'id_barbeiro'
+    });
+    Agenda.hasMany(models.Agendamento, {
+      foreignKey: 'id_agenda'
     });
   };
   return Agenda;

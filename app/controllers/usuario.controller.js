@@ -104,7 +104,7 @@ exports.update = (req, res) => {
     })
     .catch(err => {
       res.status(500).send({
-        message: "Error updating Usuario with id=" + id
+        message: "Erro atualizando usuario id=" + id
       });
     });
 };

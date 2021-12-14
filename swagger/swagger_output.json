@@ -14,9 +14,154 @@
   "consumes": [],
   "produces": [],
   "paths": {
+    "/agenda": {
+      "post": {
+        "tags": ["Agenda"],
+        "description": "",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id_barbeiro": {
+                  "example": "any"
+                },
+                "data": {
+                  "example": "any"
+                },
+                "periodo": {
+                  "example": "any"
+                },
+                "hr_inicio": {
+                  "example": "any"
+                },
+                "hr_fim": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "get": {
+        "tags": ["Agenda"],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id_barbeiro",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "data",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "periodo",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "hr_inicio",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "hr_fim",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "orderBy",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/agenda/{id_agenda}": {
+      "get": {
+        "tags": ["Agenda"],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id_agenda",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": ["Agenda"],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id_agenda",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Agenda"],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id_agenda",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
     "/usuario": {
       "post": {
-        "tags": ["usuario"],
+        "tags": ["Usuario"],
         "description": "",
         "parameters": [
           {
@@ -57,7 +202,7 @@
         }
       },
       "get": {
-        "tags": ["usuario"],
+        "tags": ["Usuario"],
         "description": "",
         "parameters": [
           {
@@ -110,7 +255,7 @@
     },
     "/usuario/{id_usuario}": {
       "get": {
-        "tags": ["usuario"],
+        "tags": ["Usuario"],
         "description": "",
         "parameters": [
           {
@@ -130,7 +275,7 @@
         }
       },
       "put": {
-        "tags": ["usuario"],
+        "tags": ["Usuario"],
         "description": "",
         "parameters": [
           {
@@ -150,7 +295,7 @@
         }
       },
       "delete": {
-        "tags": ["usuario"],
+        "tags": ["Usuario"],
         "description": "",
         "parameters": [
           {
@@ -172,7 +317,7 @@
     },
     "/administrador": {
       "post": {
-        "tags": ["administrador"],
+        "tags": ["Administrador"],
         "description": "",
         "parameters": [
           {
@@ -195,7 +340,7 @@
         }
       },
       "get": {
-        "tags": ["administrador"],
+        "tags": ["Administrador"],
         "description": "",
         "parameters": [
           {
@@ -228,7 +373,7 @@
     },
     "/administrador/{id_adm}": {
       "get": {
-        "tags": ["administrador"],
+        "tags": ["Administrador"],
         "description": "",
         "parameters": [
           {
@@ -248,7 +393,7 @@
         }
       },
       "delete": {
-        "tags": ["administrador"],
+        "tags": ["Administrador"],
         "description": "",
         "parameters": [
           {
@@ -270,7 +415,7 @@
     },
     "/cliente": {
       "post": {
-        "tags": ["cliente"],
+        "tags": ["Cliente"],
         "description": "",
         "parameters": [
           {
@@ -293,7 +438,7 @@
         }
       },
       "get": {
-        "tags": ["cliente"],
+        "tags": ["Cliente"],
         "description": "",
         "parameters": [
           {
@@ -326,7 +471,7 @@
     },
     "/cliente/{id_cliente}": {
       "get": {
-        "tags": ["cliente"],
+        "tags": ["Cliente"],
         "description": "",
         "parameters": [
           {
@@ -346,7 +491,7 @@
         }
       },
       "delete": {
-        "tags": ["cliente"],
+        "tags": ["Cliente"],
         "description": "",
         "parameters": [
           {
@@ -368,7 +513,7 @@
     },
     "/barbeiro": {
       "post": {
-        "tags": ["barbeiro"],
+        "tags": ["Barbeiro"],
         "description": "",
         "parameters": [
           {
@@ -391,7 +536,7 @@
         }
       },
       "get": {
-        "tags": ["barbeiro"],
+        "tags": ["Barbeiro"],
         "description": "",
         "parameters": [
           {
@@ -424,7 +569,7 @@
     },
     "/barbeiro/{id_barbeiro}": {
       "get": {
-        "tags": ["barbeiro"],
+        "tags": ["Barbeiro"],
         "description": "",
         "parameters": [
           {
@@ -444,7 +589,7 @@
         }
       },
       "delete": {
-        "tags": ["barbeiro"],
+        "tags": ["Barbeiro"],
         "description": "",
         "parameters": [
           {
@@ -464,9 +609,9 @@
         }
       }
     },
-    "/agenda": {
+    "/agendamento": {
       "post": {
-        "tags": ["agenda"],
+        "tags": ["Agendamento"],
         "description": "",
         "parameters": [
           {
@@ -475,19 +620,16 @@
             "schema": {
               "type": "object",
               "properties": {
-                "id_barbeiro": {
+                "id_agenda": {
                   "example": "any"
                 },
-                "data": {
+                "id_cliente": {
                   "example": "any"
                 },
-                "periodo": {
+                "data_realizacao": {
                   "example": "any"
                 },
-                "hr_inicio": {
-                  "example": "any"
-                },
-                "hr_fim": {
+                "data_agendamento": {
                   "example": "any"
                 }
               }
@@ -501,33 +643,28 @@
         }
       },
       "get": {
-        "tags": ["agenda"],
+        "tags": ["Agendamento"],
         "description": "",
         "parameters": [
           {
-            "id_barbeiro": "id_barbeiro",
-            "in": "query",
-            "type": "integer"
-          },
-          {
-            "data": "data",
-            "in": "query",
-            "type": "integer"
-          },
-          {
-            "periodo": "periodo",
+            "name": "id_agenda",
             "in": "query",
             "type": "string"
           },
           {
-            "hr_inicio": "hora inicio",
+            "name": "id_cliente",
             "in": "query",
-            "type": "integer"
+            "type": "string"
           },
           {
-            "hr_fim": "hora fim",
+            "name": "data_realizacao",
             "in": "query",
-            "type": "integer"
+            "type": "string"
+          },
+          {
+            "name": "data_agendamento",
+            "in": "query",
+            "type": "string"
           },
           {
             "name": "order",
@@ -547,16 +684,16 @@
         }
       }
     },
-    "/agenda/{id_agenda}": {
+    "/agendamento/{id_agendamento}": {
       "get": {
-        "tags": ["agenda"],
+        "tags": ["Agendamento"],
         "description": "",
         "parameters": [
           {
-            "name": "id_agenda",
+            "name": "id_agendamento",
             "in": "path",
             "required": true,
-            "type": "integer"
+            "type": "string"
           }
         ],
         "responses": {
@@ -569,11 +706,11 @@
         }
       },
       "put": {
-        "tags": ["agenda"],
+        "tags": ["Agendamento"],
         "description": "",
         "parameters": [
           {
-            "name": "id_agenda",
+            "name": "id_agendamento",
             "in": "path",
             "required": true,
             "type": "string"
@@ -589,11 +726,11 @@
         }
       },
       "delete": {
-        "tags": ["agenda"],
+        "tags": ["Agendamento"],
         "description": "",
         "parameters": [
           {
-            "name": "id_agenda",
+            "name": "id_agendamento",
             "in": "path",
             "required": true,
             "type": "string"
@@ -608,7 +745,607 @@
           }
         }
       }
-    }  
+    },
+    "/fornecedor": {
+      "post": {
+        "tags": ["Fornecedor"],
+        "description": "",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "telefone": {
+                  "example": "any"
+                },
+                "fornecedor": {
+                  "example": "any"
+                },
+                "email": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "get": {
+        "tags": ["Fornecedor"],
+        "description": "",
+        "parameters": [
+          {
+            "name": "fornecedor",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "email",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "telefone",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "orderBy",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/fornecedor/{id_fornecedor}": {
+      "get": {
+        "tags": ["Fornecedor"],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id_fornecedor",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": ["Fornecedor"],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id_fornecedor",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Fornecedor"],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id_fornecedor",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/insumo": {
+      "post": {
+        "tags": ["Insumo"],
+        "description": "",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id_fornecedor": {
+                  "example": "any"
+                },
+                "insumo": {
+                  "example": "any"
+                },
+                "estoque": {
+                  "example": "any"
+                },
+                "ultimo_valor": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "get": {
+        "tags": ["Insumo"],
+        "description": "",
+        "parameters": [
+          {
+            "name": "insumo",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "id_fornecedor",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "estoque",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "ultimo_valor",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "orderBy",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/insumo/{id_insumo}": {
+      "get": {
+        "tags": ["Insumo"],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id_insumo",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": ["Insumo"],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id_insumo",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Insumo"],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id_insumo",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/procedimento": {
+      "post": {
+        "tags": ["Procedimento"],
+        "description": "",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "procedimento": {
+                  "example": "any"
+                },
+                "valor": {
+                  "example": "any"
+                },
+                "tempo_medio": {
+                  "example": "any"
+                },
+                "descricao": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "get": {
+        "tags": ["Procedimento"],
+        "description": "",
+        "parameters": [
+          {
+            "name": "procedimento",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "valor",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "tempo_medio",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "descricao",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "orderBy",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/procedimento/{id_procedimento}": {
+      "get": {
+        "tags": ["Procedimento"],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id_procedimento",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": ["Procedimento"],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id_procedimento",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Procedimento"],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id_procedimento",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/insumoProcedimento": {
+      "post": {
+        "tags": ["InsumoProcedimento"],
+        "description": "",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id_insumo": {
+                  "example": "any"
+                },
+                "id_procedimento": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "get": {
+        "tags": ["InsumoProcedimento"],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id_insumo",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "id_procedimento",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "orderBy",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/insumoProcedimento/{id_insumo_procedimento}": {
+      "get": {
+        "tags": ["InsumoProcedimento"],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id_insumo_procedimento",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["InsumoProcedimento"],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id_insumo_procedimento",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/procedimentoAgendamento": {
+      "post": {
+        "tags": ["ProcedimentoAgendamento"],
+        "description": "",
+        "parameters": [
+          {
+            "name": "obj",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id_agendamento": {
+                  "example": "any"
+                },
+                "id_procedimento": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "get": {
+        "tags": ["ProcedimentoAgendamento"],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id_agendamento",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "id_procedimento",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "orderBy",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/procedimentoAgendamento/{id_procedimento_agendamento}": {
+      "get": {
+        "tags": ["ProcedimentoAgendamento"],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id_procedimento_agendamento",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["ProcedimentoAgendamento"],
+        "description": "",
+        "parameters": [
+          {
+            "name": "id_procedimento_agendamento",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
   },
   "definitions": {}
 }

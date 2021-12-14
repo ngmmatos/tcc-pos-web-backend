@@ -1,5 +1,7 @@
 const db = require("../models");
 const ProcedimentoAgendamento = db.ProcedimentoAgendamento;
+const Agendamento = db.Agendamento;
+const Procedimento = db.Procedimento;
 const Op = db.Sequelize.Op;
 
 exports.create = (req, res) => {
@@ -39,7 +41,8 @@ exports.findAll = (req, res) => {
     [Op.and]: [conditionIdAgendamento, conditioIdProcedimento]
   },
   order: [[`${orderBy}`, `${order}`]],
-  limit: req.query.rows
+  limit: req.query.rows,
+  include: [{ all: true}],
   })
     .then(data => {
       res.send(data);
@@ -55,7 +58,7 @@ exports.findAll = (req, res) => {
 exports.findOne = (req, res) => {
   const id = req.params.id_procedimento_agendamento;
 
-  ProcedimentoAgendamento.findByPk(id, {include: { model: Fornecedor }})
+  ProcedimentoAgendamento.findByPk(id, {include: [{ all: true }]})
     .then(data => {
       if (data) {
         res.send(data);

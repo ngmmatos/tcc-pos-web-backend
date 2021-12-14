@@ -12,30 +12,20 @@ module.exports = (sequelize, Sequelize) => {
       unique: true,
       validate: {
         notEmpty: {
-          msg: "Campo nome não pode ser vazio"
+          msg: "Campo id_agenda não pode ser vazio"
           }
         }
       },
-      id_cliente: {
+    id_cliente: {
         type: Sequelize.INTEGER,
         allowNull: false,
         unique: true,
         validate: {
           notEmpty: {
-            msg: "Campo nome não pode ser vazio"
+            msg: "Campo id cliente não pode ser vazio"
             }
           }
         },
-        id_barbeiro: {
-          type: Sequelize.INTEGER,
-          allowNull: false,
-          unique: true,
-          validate: {
-            notEmpty: {
-              msg: "Campo nome não pode ser vazio"
-              }
-            }
-          },
     data_realizacao: {
       type: Sequelize.INTEGER,
       allowNull: false,
@@ -53,15 +43,18 @@ module.exports = (sequelize, Sequelize) => {
           msg: "Campo nome não pode ser vazio"
         }
       }
-    },
+    }, 
   }, {
     timestamps: false,
     freezeTableName: true
   });
-  //   Agendamento.associate = (models) => {
-  //   Agendamento.hasOne(models.Cliente, {
-  //     foreignKey: 'id_agendamento'
-  //   }) 
-  // }
+  Agendamento.associate = (models) => {
+    Agendamento.belongsTo(models.Agenda, {
+      foreignKey: 'id_agenda'
+    });
+    Agendamento.belongsTo(models.Cliente, {
+       foreignKey: 'id_cliente'
+    });
+  };
   return Agendamento;
 };

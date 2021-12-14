@@ -1,4 +1,6 @@
 module.exports = (sequelize, Sequelize) => {
+  const ProcedimentoAgendamento = sequelize.define('ProcedimentoAgendamento');
+  const Agendamento = sequelize.define('Agendamento',);
   const Procedimento = sequelize.define("Procedimento", {
     id_procedimento: {
       type: Sequelize.INTEGER,
@@ -38,22 +40,11 @@ module.exports = (sequelize, Sequelize) => {
     descricao: {
       type: Sequelize.STRING,
       allowNull: false,
-    },
-  }, {
+    }, 
+  },{
     timestamps: false,
     freezeTableName: true
   });
-    Procedimento.associate = (models) => {
-    Procedimento.hasOne(models.Cliente, {
-      foreignKey: 'id_procedimento'
-    }) 
-    Procedimento.hasOne(models.Barbeiro, {
-      foreignKey: 'id_procedimento'
-    })
-    Procedimento.hasOne(models.Administrador, {
-      foreignKey: 'id_procedimento'
-    })
-  }
-  
+  Procedimento.belongsToMany(Agendamento, { through: ProcedimentoAgendamento});
   return Procedimento;
 };

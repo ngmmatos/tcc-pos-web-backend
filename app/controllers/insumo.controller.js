@@ -3,7 +3,7 @@ const Insumo = db.Insumo;
 const Op = db.Sequelize.Op;
 const Fornecedor = db.Fornecedor;
 
-exports.create = (req, res) => {
+exports.create = async (req, res) => {
 
   const insumo = {
     id_fornecedor: req.body.id_fornecedor,
@@ -12,7 +12,7 @@ exports.create = (req, res) => {
     ultimo_valor: req.body.ultimo_valor
   };
 
-  Insumo.create(insumo)
+  await Insumo.create(insumo)
     .then(data => {
       res.send(data);
     })
@@ -28,7 +28,8 @@ exports.findAll = (req, res) => {
   const insumo = req.query.insumo;
   const id_fornecedor = req.query.id_fornecedor;
   const estoque = req.query.estoque;
-  var ultimo_valor = req.query.ultimo_valor;
+  const ultimo_valor = req.query.ultimo_valor;
+  var order = req.query.order;
   var orderBy= req.query.orderBy
 
   if (order === undefined)
@@ -46,7 +47,7 @@ exports.findAll = (req, res) => {
   },
   order: [[`${orderBy}`, `${order}`]],
   limit: req.query.rows,
-  include: { model: Usuario }
+  include: { model: Fornecedor }
   })
     .then(data => {
       res.send(data);

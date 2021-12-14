@@ -91,7 +91,7 @@ exports.update = (req, res) => {
     .then(num => {
       if (num == 1) {
         res.send({
-          message: "Agenda was updated successfully."
+          message: "Agenda atualizada com sucesso."
         });
       } else {
         res.status(404).send({
@@ -101,7 +101,7 @@ exports.update = (req, res) => {
     })
     .catch(err => {
       res.status(500).send({
-        message: "Error updating Agenda with id=" + id
+        message: "Erro atualizando agenda com id=" + id
       });
     });
 };

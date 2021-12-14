@@ -1,5 +1,7 @@
 const db = require("../models");
-const Agendamento = db.agendamento;
+const Agendamento = db.Agendamento;
+const Agenda = db.Agenda;
+const Cliente = db.Cliente;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new Tutorial
@@ -14,7 +16,6 @@ exports.create = (req, res) => {
 
   const agendamento = {
     id_agenda: req.body.id_agenda,
-    id_barbeiro: req.body.id_barbeiro,
     id_cliente: req.body.id_cliente,
     data_realizacao: req.body.data_realizacao,
     data_agendamento: req.body.data_agendamento
@@ -36,7 +37,6 @@ exports.create = (req, res) => {
 
 // Retrieve all Tutorials from the database.
 exports.findAll = (req, res) => {
-  const id_barbeiro = req.query.id_barbeiro;
   const id_agenda = req.query.id_agenda;
   const id_cliente = req.query.id_cliente;
   const data_realizacao = req.query.data_realizacao;
@@ -49,17 +49,17 @@ exports.findAll = (req, res) => {
   if (orderBy === undefined)
     orderBy = 'id_agendamento'
 
-  var conditionIdBarbeiro = id_barbeiro ? { id_barbeiro: { [Op.eq]: `${id_barbeiro}` } } : null;
   var conditionIdAgenda = id_agenda ? { id_agenda: { [Op.eq]: `${id_agenda}` } } : null;
   var conditionIdCliente = id_cliente ? { id_cliente: { [Op.eq]: `${id_cliente}` } } : null;
   var conditionDataRealizacao = data_realizacao ? { data_realizacao: { [Op.eq]: `${data_realizacao}` } } : null;
   var conditionDataAgendamento = data_agendamento ? { data_agendamento: { [Op.eq]: `${data_agendamento}` } } : null;
 
   Agendamento.findAll({ where: {
-    [Op.and]: [conditionIdBarbeiro, conditionIdAgenda, conditionIdCliente, conditionDataRealizacao, conditionDataAgendamento]
+    [Op.and]: [conditionIdAgenda, conditionIdCliente, conditionDataRealizacao, conditionDataAgendamento]
   },
   order: [[`${orderBy}`, `${order}`]],
-  limit: req.query.rows
+  limit: req.query.rows,
+  include: [{ all: true}],
   })
     .then(data => {
       res.send(data);
@@ -75,7 +75,7 @@ exports.findAll = (req, res) => {
 exports.findOne = (req, res) => {
   const id = req.params.id_agendamento;
 
-  Agendamento.findByPk(id)
+  Agendamento.findByPk(id, {include: [{ all: true }]})
     .then(data => {
       if (data) {
         res.send(data);

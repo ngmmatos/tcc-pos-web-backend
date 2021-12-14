@@ -26,6 +26,8 @@ module.exports = (sequelize, Sequelize) => {
     { foreignKey: 'id_barbeiro' });
   Barbeiro.belongsTo(models.Usuario, 
   { foreignKey: 'id_usuario' });
+  Barbeiro.belongsTo(models.Agendamento, 
+    { foreignKey: 'id_usuario' });
   };
     
   return Barbeiro;

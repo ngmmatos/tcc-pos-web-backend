@@ -61,7 +61,7 @@ exports.findAll = (req, res) => {
 exports.findOne = (req, res) => {
   const id = req.params.id_procedimento;
 
-  Procedimento.findByPk(id, {include: { model: Fornecedor }})
+  Procedimento.findByPk(id)
     .then(data => {
       if (data) {
         res.send(data);
