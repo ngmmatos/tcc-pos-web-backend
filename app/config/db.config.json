@@ -1,9 +1,8 @@
 {
-  "development": {
-    "username": "ngmatos",
-    "password": "26455426",
-    "database": "RhBarbearia",
-    "host": "rhbarbearia.ciqcv3ldufkz.sa-east-1.rds.amazonaws.com",
-    "dialect": "mysql",
-    "operatorsAliases": false
-  }}
+  "username": "bmdtYXRvcw==",
+  "password": "MjY0NTU0MjY=",
+  "database": "UmhCYXJiZWFyaWE=",
+  "host": "cmhiYXJiZWFyaWEuY2lxY3YzbGR1Zmt6LnNhLWVhc3QtMS5yZHMuYW1hem9uYXdzLmNvbQ==",
+  "dialect": "mysql",
+  "operatorsAliases": false
+}

@@ -2,8 +2,8 @@
   "swagger": "2.0",
   "info": {
     "version": "1.0.0",
-    "title": "REST API",
-    "description": ""
+    "title": "RH BArbearia",
+    "description": "API para gerenciamento do sistema RH Barbearia"
   },
   "host": "localhost:8080",
   "basePath": "/RhBarbearia",
@@ -847,7 +847,7 @@
         ],
         "responses": {
           "404": {
-            "description": "Not Found"
+            "description": "Not Found"  
           },
           "500": {
             "description": "Internal Server Error"

@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/ngmmatos/tcc-pos-web-backend#readme",
   "dependencies": {
+    "Buffer": "^0.0.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "fs": "^0.0.1-security",
