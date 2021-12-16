@@ -127,17 +127,40 @@
             "in": "path",
             "required": true,
             "type": "string"
-          }
-        ],
+          },
+          {
+            "name": "obj",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id_barbeiro": {
+                  "example": "any"
+                },
+                "data": {
+                  "example": "any"
+                },
+                "periodo": {
+                  "example": "any"
+                },
+                "hr_inicio": {
+                  "example": "any"
+                },
+                "hr_fim": {
+                  "example": "any"
+                }
+              }
+             }
+          }],   
         "responses": {
           "404": {
             "description": "Not Found"
           },
           "500": {
             "description": "Internal Server Error"
+            }
           }
-        }
-      },
+        },
       "delete": {
         "tags": ["Agenda"],
         "description": "",
@@ -155,10 +178,10 @@
           },
           "500": {
             "description": "Internal Server Error"
+            }
           }
         }
-      }
-    },
+      },  
     "/usuario": {
       "post": {
         "tags": ["Usuario"],
@@ -283,6 +306,36 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "obj",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nome": {
+                  "example": "any"
+                },
+                "email": {
+                  "example": "any"
+                },
+                "senha": {
+                  "example": "any"
+                },
+                "data_nascimento": {
+                  "example": "any"
+                },
+                "telefone": {
+                  "example": "any"
+                },
+                "sexo": {
+                  "example": "any"
+                },
+                "cpf": {
+                  "example": "any"
+                }
+              }
+            }
           }
         ],
         "responses": {
@@ -714,6 +767,27 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "obj",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id_agenda": {
+                  "example": "any"
+                },
+                "id_cliente": {
+                  "example": "any"
+                },
+                "data_realizacao": {
+                  "example": "any"
+                },
+                "data_agendamento": {
+                  "example": "any"
+                }
+              }
+            }
           }
         ],
         "responses": {
@@ -843,6 +917,24 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "obj",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "telefone": {
+                  "example": "any"
+                },
+                "fornecedor": {
+                  "example": "any"
+                },
+                "email": {
+                  "example": "any"
+                }
+              }
+            }
           }
         ],
         "responses": {
@@ -975,6 +1067,27 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "obj",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id_fornecedor": {
+                  "example": "any"
+                },
+                "insumo": {
+                  "example": "any"
+                },
+                "estoque": {
+                  "example": "any"
+                },
+                "ultimo_valor": {
+                  "example": "any"
+                }
+              }
+            }
           }
         ],
         "responses": {
@@ -1112,6 +1225,27 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "obj",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "procedimento": {
+                  "example": "any"
+                },
+                "valor": {
+                  "example": "any"
+                },
+                "tempo_medio": {
+                  "example": "any"
+                },
+                "descricao": {
+                  "example": "any"
+                }
+              }
+            }
           }
         ],
         "responses": {
@@ -1348,4 +1482,4 @@
     }
   },
   "definitions": {}
-}
+  }
