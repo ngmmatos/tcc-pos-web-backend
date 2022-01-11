@@ -18,7 +18,7 @@ app.use(express.urlencoded({ extended: true }));
 const db = require("./app/models");
 // db.sequelize.sync();
 
-app.use('/SwaggerRhBarbearia', swaggerUi.serve, swaggerUi.setup(swaggerFile));
+app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 require("./app/routes/agenda.routes")(app);
 require("./app/routes/usuario.routes")(app);
