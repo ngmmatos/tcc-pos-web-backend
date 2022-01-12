@@ -5,7 +5,6 @@
     "title": "RH BArbearia",
     "description": "API para gerenciamento do sistema RH Barbearia"
   },
-  "host": "localhost:8080",
   "basePath": "/RhBarbearia",
   "tags": [],
   "schemes": [
