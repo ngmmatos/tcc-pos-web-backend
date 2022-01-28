@@ -5,11 +5,7 @@ const swaggerFile = require('./swagger/swagger_output.json');
 
 const app = express();
 
-var corsOptions = {
-  origin: "http://localhost:8081"
-};
-
-app.use(cors(corsOptions));
+app.use(cors());
 
 app.use(express.json());
 
@@ -31,6 +27,7 @@ require("./app/routes/insumo.routes")(app);
 require("./app/routes/procedimento.routes")(app);
 require("./app/routes/insumoProcedimento.routes")(app);
 require("./app/routes/procedimentoAgendamento.routes")(app);
+require("./app/routes/login.routes")(app);
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {

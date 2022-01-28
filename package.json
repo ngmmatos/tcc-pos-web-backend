@@ -19,12 +19,15 @@
   },
   "homepage": "https://github.com/ngmmatos/tcc-pos-web-backend#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "Buffer": "^0.0.0",
     "cors": "^2.8.5",
     "express": "^4.17.2",
     "fs": "^0.0.1-security",
+    "jsonwebtoken": "^8.5.1",
     "mysql2": "^2.3.2",
     "nodemon": "^2.0.14",
+    "package.json": "^2.0.1",
     "sequelize": "^6.8.0",
     "swagger-autogen": "^2.12.3",
     "swagger-ui-express": "^4.1.6"

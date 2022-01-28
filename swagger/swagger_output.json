@@ -1,54 +1,88 @@
 {
-  "swagger": "2.0",
+  "openapi": "3.0.2",
   "info": {
     "version": "1.0.0",
     "title": "RH BArbearia",
     "description": "API para gerenciamento do sistema RH Barbearia"
-  },
-  "basePath": "/RhBarbearia",
-  "tags": [],
-  "schemes": [
-    "http"
-  ],
-  "consumes": [],
-  "produces": [],
+    },
+  "servers": [
+    {
+      "url": "http:/RhBarbearia",
+      "description": "Basic"
+    }
+   ],
   "paths": {
-    "/agenda": {
+    "/login": {
       "post": {
-        "tags": ["Agenda"],
+        "tags": ["Login"],
+        "summary": "Fazer login no sistema",
         "description": "",
-        "parameters": [
-          {
-            "name": "obj",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "id_barbeiro": {
-                  "example": "any"
+        "operationId": "addLogin",
+        "requestBody": 
+        {
+          "required": true,
+          "content": {
+            "application/json":{
+              "schema":{
+                  "$ref": "#/components/schemas/Login"
+                      }
+                    }
+                  }
                 },
-                "data": {
-                  "example": "any"
-                },
-                "periodo": {
-                  "example": "any"
-                },
-                "hr_inicio": {
-                  "example": "any"
-                },
-                "hr_fim": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
         "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "201": {
+            "description": "Created"
+          },
           "500": {
             "description": "Internal Server Error"
+            },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+            }
           }
         }
-      },
+      }, 
+      "/agenda": {
+        "post": {
+          "tags": ["Agenda"],
+          "summary": "Adicionar nova entrada de agenda",
+          "description": "",
+          "operationId": "addAgenda",
+          "requestBody": 
+          {
+            "required": true,
+            "content": {
+              "application/json":{
+                "schema":{
+                    "$ref": "#/components/schemas/Agenda"
+                        }
+                      }
+                    }
+                  },
+          "responses": {
+            "200": {
+              "description": "Success"
+            },
+            "201": {
+              "description": "Created"
+            },
+            "500": {
+              "description": "Internal Server Error"
+              },
+            "400": {
+              "description": "Bad Request"
+            },
+            "401": {
+              "description": "Unauthorized"
+              }
+            }
+          },
       "get": {
         "tags": ["Agenda"],
         "description": "",
@@ -90,6 +124,9 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "Success"
+          },
           "500": {
             "description": "Internal Server Error"
           }
@@ -109,6 +146,12 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
           "404": {
             "description": "Not Found"
           },
@@ -152,6 +195,12 @@
              }
           }],   
         "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
           "404": {
             "description": "Not Found"
           },
@@ -172,6 +221,12 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
           "404": {
             "description": "Not Found"
           },
@@ -181,48 +236,41 @@
           }
         }
       },  
-    "/usuario": {
-      "post": {
-        "tags": ["Usuario"],
-        "description": "",
-        "parameters": [
+      "/usuario": {
+        "post": {
+          "tags": ["Usuario"],
+          "summary": "Adicionar novo Usuario",
+          "description": "",
+          "operationId": "addUsuario",
+          "requestBody": 
           {
-            "name": "obj",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "nome": {
-                  "example": "any"
-                },
-                "email": {
-                  "example": "any"
-                },
-                "senha": {
-                  "example": "any"
-                },
-                "data_nascimento": {
-                  "example": "any"
-                },
-                "telefone": {
-                  "example": "any"
-                },
-                "sexo": {
-                  "example": "any"
-                },
-                "cpf": {
-                  "example": "any"
-                }
+            "required": true,
+            "content": {
+              "application/json":{
+                "schema":{
+                    "$ref": "#/components/schemas/Usuario"
+                        }
+                      }
+                    }
+                  },
+          "responses": {
+            "200": {
+              "description": "Success"
+            },
+            "201": {
+              "description": "Created"
+            },
+            "500": {
+              "description": "Internal Server Error"
+              },
+            "400": {
+              "description": "Bad Request"
+            },
+            "401": {
+              "description": "Unauthorized"
               }
             }
-          }
-        ],
-        "responses": {
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
+          },
       "get": {
         "tags": ["Usuario"],
         "description": "",
@@ -269,6 +317,9 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "Success"
+          },
           "500": {
             "description": "Internal Server Error"
           }
@@ -288,6 +339,12 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
           "404": {
             "description": "Not Found"
           },
@@ -338,6 +395,12 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
           "404": {
             "description": "Not Found"
           },
@@ -358,6 +421,9 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "Success"
+          },
           "404": {
             "description": "Not Found"
           },
@@ -370,27 +436,38 @@
     "/administrador": {
       "post": {
         "tags": ["Administrador"],
+        "summary": "Adicionar novo administrador",
         "description": "",
-        "parameters": [
-          {
-            "name": "obj",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "id_usuario": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
+        "operationId": "addAdministrador",
+        "requestBody": 
+        {
+          "required": true,
+          "content": {
+            "application/json":{
+              "schema":{
+                  "$ref": "#/components/schemas/Administrador"
+                      }
+                    }
+                  }
+                },
         "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "201": {
+            "description": "Created"
+          },
           "500": {
             "description": "Internal Server Error"
+            },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+            }
           }
-        }
-      },
+        },
       "get": {
         "tags": ["Administrador"],
         "description": "",
@@ -417,6 +494,9 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "Success"
+          },
           "500": {
             "description": "Internal Server Error"
           }
@@ -436,6 +516,12 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
           "404": {
             "description": "Not Found"
           },
@@ -456,6 +542,9 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "Success"
+          },
           "404": {
             "description": "Not Found"
           },
@@ -468,27 +557,38 @@
     "/cliente": {
       "post": {
         "tags": ["Cliente"],
+        "summary": "Adicionar novo cliente",
         "description": "",
-        "parameters": [
-          {
-            "name": "obj",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "id_usuario": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
+        "operationId": "addCliente",
+        "requestBody": 
+        {
+          "required": true,
+          "content": {
+            "application/json":{
+              "schema":{
+                  "$ref": "#/components/schemas/Cliente"
+                      }
+                    }
+                  }
+                },
         "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "201": {
+            "description": "Created"
+          },
           "500": {
             "description": "Internal Server Error"
+            },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+            }
           }
-        }
-      },
+        },
       "get": {
         "tags": ["Cliente"],
         "description": "",
@@ -515,6 +615,9 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "Success"
+          },
           "500": {
             "description": "Internal Server Error"
           }
@@ -534,6 +637,12 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
           "404": {
             "description": "Not Found"
           },
@@ -554,6 +663,9 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "Success"
+          },
           "404": {
             "description": "Not Found"
           },
@@ -566,27 +678,38 @@
     "/barbeiro": {
       "post": {
         "tags": ["Barbeiro"],
+        "summary": "Adicionar novo barbeiro",
         "description": "",
-        "parameters": [
-          {
-            "name": "obj",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "id_usuario": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
+        "operationId": "addBarbeiro",
+        "requestBody": 
+        {
+          "required": true,
+          "content": {
+            "application/json":{
+              "schema":{
+                  "$ref": "#/components/schemas/Barbeiro"
+                      }
+                    }
+                  }
+                },
         "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "201": {
+            "description": "Created"
+          },
           "500": {
             "description": "Internal Server Error"
+            },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+            }
           }
-        }
-      },
+        },
       "get": {
         "tags": ["Barbeiro"],
         "description": "",
@@ -613,6 +736,9 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "Success"
+          },
           "500": {
             "description": "Internal Server Error"
           }
@@ -632,6 +758,12 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
           "404": {
             "description": "Not Found"
           },
@@ -652,6 +784,9 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "Success"
+          },
           "404": {
             "description": "Not Found"
           },
@@ -664,36 +799,38 @@
     "/agendamento": {
       "post": {
         "tags": ["Agendamento"],
+        "summary": "Adicionar novo agendamento",
         "description": "",
-        "parameters": [
-          {
-            "name": "obj",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "id_agenda": {
-                  "example": "any"
+        "operationId": "addAgendamento",
+        "requestBody": 
+        {
+          "required": true,
+          "content": {
+            "application/json":{
+              "schema":{
+                  "$ref": "#/components/schemas/Agendamento"
+                      }
+                    }
+                  }
                 },
-                "id_cliente": {
-                  "example": "any"
-                },
-                "data_realizacao": {
-                  "example": "any"
-                },
-                "data_agendamento": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
         "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "201": {
+            "description": "Created"
+          },
           "500": {
             "description": "Internal Server Error"
+            },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+            }
           }
-        }
-      },
+        },
       "get": {
         "tags": ["Agendamento"],
         "description": "",
@@ -730,6 +867,9 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "Success"
+          },
           "500": {
             "description": "Internal Server Error"
           }
@@ -749,6 +889,12 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
           "404": {
             "description": "Not Found"
           },
@@ -790,6 +936,12 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
           "404": {
             "description": "Not Found"
           },
@@ -810,6 +962,9 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "Success"
+          },
           "404": {
             "description": "Not Found"
           },
@@ -822,33 +977,38 @@
     "/fornecedor": {
       "post": {
         "tags": ["Fornecedor"],
+        "summary": "Adicionar novo fornecedor",
         "description": "",
-        "parameters": [
-          {
-            "name": "obj",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "telefone": {
-                  "example": "any"
+        "operationId": "addFornecedor",
+        "requestBody": 
+        {
+          "required": true,
+          "content": {
+            "application/json":{
+              "schema":{
+                  "$ref": "#/components/schemas/Fornecedor"
+                      }
+                    }
+                  }
                 },
-                "fornecedor": {
-                  "example": "any"
-                },
-                "email": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
         "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "201": {
+            "description": "Created"
+          },
           "500": {
             "description": "Internal Server Error"
+            },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+            }
           }
-        }
-      },
+        },
       "get": {
         "tags": ["Fornecedor"],
         "description": "",
@@ -880,6 +1040,9 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "Success"
+          },
           "500": {
             "description": "Internal Server Error"
           }
@@ -899,6 +1062,12 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
           "404": {
             "description": "Not Found"
           },
@@ -937,6 +1106,12 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
           "404": {
             "description": "Not Found"  
           },
@@ -957,6 +1132,12 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
           "404": {
             "description": "Not Found"
           },
@@ -969,36 +1150,38 @@
     "/insumo": {
       "post": {
         "tags": ["Insumo"],
+        "summary": "Adicionar novo insumo",
         "description": "",
-        "parameters": [
-          {
-            "name": "obj",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "id_fornecedor": {
-                  "example": "any"
+        "operationId": "addInsumo",
+        "requestBody": 
+        {
+          "required": true,
+          "content": {
+            "application/json":{
+              "schema":{
+                  "$ref": "#/components/schemas/Insumo"
+                      }
+                    }
+                  }
                 },
-                "insumo": {
-                  "example": "any"
-                },
-                "estoque": {
-                  "example": "any"
-                },
-                "ultimo_valor": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
         "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "201": {
+            "description": "Created"
+          },
           "500": {
             "description": "Internal Server Error"
+            },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+            }
           }
-        }
-      },
+        },
       "get": {
         "tags": ["Insumo"],
         "description": "",
@@ -1030,6 +1213,9 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "Success"
+          },
           "500": {
             "description": "Internal Server Error"
           }
@@ -1049,6 +1235,12 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
           "404": {
             "description": "Not Found"
           },
@@ -1090,6 +1282,12 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
           "404": {
             "description": "Not Found"
           },
@@ -1110,6 +1308,9 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "Success"
+          },
           "404": {
             "description": "Not Found"
           },
@@ -1122,36 +1323,38 @@
     "/procedimento": {
       "post": {
         "tags": ["Procedimento"],
+        "summary": "Adicionar novo procedimento",
         "description": "",
-        "parameters": [
-          {
-            "name": "obj",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "procedimento": {
-                  "example": "any"
+        "operationId": "addProcedimento",
+        "requestBody": 
+        {
+          "required": true,
+          "content": {
+            "application/json":{
+              "schema":{
+                  "$ref": "#/components/schemas/Procedimento"
+                      }
+                    }
+                  }
                 },
-                "valor": {
-                  "example": "any"
-                },
-                "tempo_medio": {
-                  "example": "any"
-                },
-                "descricao": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
         "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "201": {
+            "description": "Created"
+          },
           "500": {
             "description": "Internal Server Error"
+            },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+            }
           }
-        }
-      },
+        },
       "get": {
         "tags": ["Procedimento"],
         "description": "",
@@ -1188,6 +1391,9 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "Success"
+          },
           "500": {
             "description": "Internal Server Error"
           }
@@ -1207,6 +1413,12 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
           "404": {
             "description": "Not Found"
           },
@@ -1248,6 +1460,12 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
           "404": {
             "description": "Not Found"
           },
@@ -1268,6 +1486,9 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "Success"
+          },
           "404": {
             "description": "Not Found"
           },
@@ -1280,30 +1501,38 @@
     "/insumoProcedimento": {
       "post": {
         "tags": ["InsumoProcedimento"],
+        "summary": "Adicionar novo insumo-Procedimento",
         "description": "",
-        "parameters": [
-          {
-            "name": "obj",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "id_insumo": {
-                  "example": "any"
+        "operationId": "addInsumoProcedimento",
+        "requestBody": 
+        {
+          "required": true,
+          "content": {
+            "application/json":{
+              "schema":{
+                  "$ref": "#/components/schemas/InsumoProcedimento"
+                      }
+                    }
+                  }
                 },
-                "id_procedimento": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
         "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "201": {
+            "description": "Created"
+          },
           "500": {
             "description": "Internal Server Error"
+            },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+            }
           }
-        }
-      },
+        },
       "get": {
         "tags": ["InsumoProcedimento"],
         "description": "",
@@ -1330,6 +1559,9 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "Success"
+          },
           "500": {
             "description": "Internal Server Error"
           }
@@ -1349,6 +1581,12 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
           "404": {
             "description": "Not Found"
           },
@@ -1369,6 +1607,9 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "Success"
+          },
           "404": {
             "description": "Not Found"
           },
@@ -1381,30 +1622,38 @@
     "/procedimentoAgendamento": {
       "post": {
         "tags": ["ProcedimentoAgendamento"],
+        "summary": "Adicionar novo procedimento-Agendamento",
         "description": "",
-        "parameters": [
-          {
-            "name": "obj",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "id_agendamento": {
-                  "example": "any"
+        "operationId": "addProcedimentoAgendamento",
+        "requestBody": 
+        {
+          "required": true,
+          "content": {
+            "application/json":{
+              "schema":{
+                  "$ref": "#/components/schemas/ProcedimentoAgendamento"
+                      }
+                    }
+                  }
                 },
-                "id_procedimento": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
         "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "201": {
+            "description": "Created"
+          },
           "500": {
             "description": "Internal Server Error"
+            },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+            }
           }
-        }
-      },
+        },
       "get": {
         "tags": ["ProcedimentoAgendamento"],
         "description": "",
@@ -1431,6 +1680,9 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "Success"
+          },
           "500": {
             "description": "Internal Server Error"
           }
@@ -1450,6 +1702,12 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
           "404": {
             "description": "Not Found"
           },
@@ -1470,6 +1728,9 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "Success"
+          },
           "404": {
             "description": "Not Found"
           },
@@ -1480,5 +1741,193 @@
       }
     }
   },
+  "components": {
+    "schemas": {
+      "Login": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "senha": {
+            "type": "string"
+                  }
+              }
+          },
+        "Agenda": {
+          "type": "object",
+          "properties": {
+            "data": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "periodo": {
+              "type": "string"
+            },
+            "hr_inicio": {
+              "type": "integer",
+              "format": "int64"
+                    },
+            "hr_fim": {
+              "type": "integer",
+              "format": "int64"
+                    }
+                  }
+              },
+          "Usuario": {
+            "type": "object",
+            "properties": {
+              "nome": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string"
+              },
+              "senha": {
+                "type": "string"
+                      },
+              "data_nascimento": {
+                "type": "string"
+                      },
+              "telefone": {
+                "type": "string"
+                      },
+              "sexo": {
+                "type": "string"
+                      },
+              "cpf": {
+                "type": "string"
+                      }
+                    }
+                },
+        "Administrador": {
+          "type": "object",
+          "properties": {
+            "id_usuario": {
+              "type": "integer",
+              "format": "int64"
+                  }
+                }  
+              },
+        "Cliente": {
+          "type": "object",
+          "properties": {
+            "id_usuario": {
+              "type": "integer",
+              "format": "int64"
+                  }
+                }  
+              },
+        "Barbeiro": {
+          "type": "object",
+          "properties": {
+            "id_usuario": {
+              "type": "integer",
+              "format": "int64"
+                  }
+                }  
+              },
+        "Agendamento": {
+          "type": "object",
+          "properties": {
+            "id_agenda": {
+              "type": "integer",
+              "format": "int64"
+                  },
+            "id_cliente": {
+              "type": "integer",
+              "format": "int64"
+                  },
+            "data_realizacao": {
+              "type": "integer",
+              "format": "int64"
+                  },
+            "data_agendamento": {
+              "type": "integer",
+              "format": "int64"
+                  }
+                }  
+              },
+          "Insumo": {
+            "type": "object",
+            "properties": {
+              "id_fornecedor": {
+                "type": "integer",
+                "format": "int64"
+                    },
+              "insumo": {
+                "type": "string"
+                    },
+              "estoque": {
+                "type": "integer",
+                "format": "int64"
+                    },
+              "ultimo_valor": {
+                "type": "number",
+                "format": "float"
+                    }
+                  }  
+                },
+        "Fornecedor": {
+            "type": "object",
+            "properties": {
+              "telefone": {
+                "type": "string"
+              },
+              "fornecedor": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string"
+                    }
+                  }
+                },
+        "Procedimento": {
+          "type": "object",
+          "properties": {
+            "procedimento": {
+              "type": "string"
+                  },
+            "tempo_medio": {
+              "type": "integer",
+              "format": "int64"
+                  },
+            "descricao": {
+              "type": "string"
+                  },
+            "valor": {
+              "type": "number",
+              "format": "float"
+                  }
+                }  
+              },
+        "InsumoProcedimento": {
+          "type": "object",
+          "properties": {
+              "id_insumo": {
+                "type": "integer",
+                "format": "int64"
+                    },
+              "id_procedimento": {
+                "type": "integer",
+                "format": "int64"
+                    }  
+                  }
+                },
+        "ProcedimentoAgendamento": {
+          "type": "object",
+          "properties": {
+              "id_insumo": {
+                "type": "integer",
+                "format": "int64"
+                    },
+              "id_procedimento": {
+                "type": "integer",
+                "format": "int64"
+                    }  
+                  }
+                }
+              }
+            },
   "definitions": {}
   }

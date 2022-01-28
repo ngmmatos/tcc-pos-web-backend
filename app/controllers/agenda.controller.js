@@ -89,6 +89,7 @@ exports.update = (req, res) => {
     where: { id_agenda: id }
   })
     .then(num => {
+
       if (num == 1) {
         res.send({
           message: "Agenda atualizada com sucesso."
