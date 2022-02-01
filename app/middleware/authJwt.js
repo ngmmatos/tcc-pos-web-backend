@@ -7,7 +7,6 @@ const Cliente = db.Cliente;
 
 verifyToken = (req, res, next) => {
 
-
   let token = req.headers["authorization"];
 
   if (!token) {
