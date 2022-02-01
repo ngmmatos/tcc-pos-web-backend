@@ -1,19 +1,17 @@
+const { authJwt } = require("../middleware");
+
 module.exports = app => {
   const cliente = require("../controllers/cliente.controller.js");
 
   var router = require("express").Router();
 
-  // Create a new Tutorial
-  router.post("/cliente", cliente.create);
+  router.post("/cliente", [authJwt.verifyToken], cliente.create);
 
-  // Retrieve all Tutorials
-  router.get("/cliente", cliente.findAll);
+  router.get("/cliente", [authJwt.verifyToken], cliente.findAll);
 
-  // Retrieve a single Tutorial with id
-  router.get("/cliente/:id_cliente", cliente.findOne);
+  router.get("/cliente/:id_cliente", [authJwt.verifyToken], cliente.findOne);
 
-  // Delete a Tutorial with id
-  router.delete("/cliente/:id_cliente", cliente.delete);
+  router.delete("/cliente/:id_cliente", [authJwt.verifyToken], cliente.delete);
 
   app.use('/RhBarbearia/', router);
 };

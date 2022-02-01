@@ -1,15 +1,17 @@
+const { authJwt } = require("../middleware");
+
 module.exports = app => {
   const insumoProcedimento = require("../controllers/insumoProcedimento.controller.js");
 
   var router = require("express").Router();
 
-  router.post("/insumoProcedimento", insumoProcedimento.create);
+  router.post("/insumoProcedimento", [authJwt.verifyToken], insumoProcedimento.create);
 
-  router.get("/insumoProcedimento", insumoProcedimento.findAll);
+  router.get("/insumoProcedimento", [authJwt.verifyToken], insumoProcedimento.findAll);
 
-  router.get("/insumoProcedimento/:id_insumo_procedimento", insumoProcedimento.findOne);
+  router.get("/insumoProcedimento/:id_insumo_procedimento", [authJwt.verifyToken], insumoProcedimento.findOne);
 
-  router.delete("/insumoProcedimento/:id_insumo_procedimento", insumoProcedimento.delete);
+  router.delete("/insumoProcedimento/:id_insumo_procedimento", [authJwt.verifyToken], insumoProcedimento.delete);
 
   app.use('/RhBarbearia/', router);
 };

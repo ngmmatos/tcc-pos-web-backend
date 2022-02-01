@@ -1,4 +1,5 @@
 const db = require("../models");
+const verify = require("../middleware/authJwt");
 const Administrador = db.Administrador;
 const Usuario = db.Usuario;
 const Op = db.Sequelize.Op;
@@ -22,6 +23,7 @@ exports.create = (req, res) => {
 };
 
 exports.findAll = (req, res) => {
+
   const id_adm = req.query.id_adm;
   const id_usuario = req.query.id_usuario;
   var order = req.query.order;

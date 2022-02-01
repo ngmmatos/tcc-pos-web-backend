@@ -8,6 +8,30 @@ const Cliente = db.Cliente;
 var jwt = require("jsonwebtoken");
 var bcrypt = require("bcryptjs");
 
+const checkUsers = async (x) => {
+
+  const list_empty = []
+
+  const adm = await Administrador.findOne({ where: {id_usuario: x.id_usuario} });
+  if (adm !== null) {
+    list_empty.push("admin");
+  }
+
+  const barb = await Barbeiro.findOne({ where: {id_usuario: x.id_usuario} });
+  
+  if (barb !== null) {
+    list_empty.push("barbeiro");
+  }
+
+  const cli = await Cliente.findOne({ where: {id_usuario: x.id_usuario} });
+  if (cli !== null) {
+    list_empty.push("cliente");
+    }
+
+  return list_empty
+  }; 
+
+
 exports.signin = (req, res) => {
 
   Usuario.findOne({
@@ -15,17 +39,24 @@ exports.signin = (req, res) => {
       email: req.body.email
     }
   })
-    .then(user => {
+    .then(user  => {
       if (!user) {
         return res.status(404).send({ message: "User Not found." });
       }
 
-      var passwordIsValid = bcrypt.compareSync(
-        req.body.senha,
-        user.senha
-      );
+      // var passwordIsValid = bcrypt.compareSync(
+      //   req.body.senha,
+      //   user.senha
+      // );
 
-      if (!passwordIsValid) {
+      // if (!passwordIsValid) {
+      //   return res.status(401).send({
+      //     accessToken: null,
+      //     message: "Invalid Password!"
+      //   });
+      // }
+
+      if (user.senha !== req.body.senha) {
         return res.status(401).send({
           accessToken: null,
           message: "Invalid Password!"
@@ -33,42 +64,20 @@ exports.signin = (req, res) => {
       }
 
       var token = jwt.sign({ id: user.id_usuario }, process.env.SECRET, {
-        expiresIn: 86400 // 24 hours
+        expiresIn: 1800 // 30 minutos
       });
 
-      var authorities = [];
+      checkUsers(user).then((data) => {
 
-      const adm = Administrador.findOne({ where: {id_usuario: req.id_usuario} });
-      if (adm !== null) {
-        authorities.push("admin");
-      } else {
-          next();
-          return;
-          }
-
-      const barb = Barbeiro.findOne({ where: {id_usuario: req.id_usuario} });
-      if (barb !== null) {
-        authorities.push("barbeiro");
-      } else {
-          next();
-          return;
-          }
-  
-      const cli = Cliente.findOne({ where: {id_usuario: req.id_usuario} });
-      if (cli !== null) {
-        authorities.push("cliente");
-      } else {
-          next();
-          return;
-          }
-    res.status(200).send({
-      id: user.id_usuario,
-      email: user.email,
-      roles: authorities,
-      accessToken: token
-        });
+      res.status(200).send({
+        id: user.id_usuario,
+        email: user.email,
+        roles: data,
+        accessToken: token
+          });
+        })
+      .catch(err => {
+        res.status(500).send({ message: err.message });
     })
-    .catch(err => {
-      res.status(500).send({ message: err.message });
-    });
+  });
 };

@@ -1,17 +1,19 @@
+const { authJwt } = require("../middleware");
+
 module.exports = app => {
   const procedimento = require("../controllers/procedimento.controller.js");
 
   var router = require("express").Router();
 
-  router.post("/procedimento", procedimento.create);
+  router.post("/procedimento", [authJwt.verifyToken], procedimento.create);
 
-  router.get("/procedimento", procedimento.findAll);
+  router.get("/procedimento", [authJwt.verifyToken], procedimento.findAll);
 
-  router.get("/procedimento/:id_procedimento", procedimento.findOne);
+  router.get("/procedimento/:id_procedimento", [authJwt.verifyToken], procedimento.findOne);
 
-  router.put("/procedimento/:id_procedimento", procedimento.update);
+  router.put("/procedimento/:id_procedimento", [authJwt.verifyToken], procedimento.update);
 
-  router.delete("/procedimento/:id_procedimento", procedimento.delete);
+  router.delete("/procedimento/:id_procedimento", [authJwt.verifyToken], procedimento.delete);
 
   app.use('/RhBarbearia/', router);
 };

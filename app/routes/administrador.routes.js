@@ -1,19 +1,17 @@
+const { authJwt } = require("../middleware");
+
 module.exports = app => {
   const administrador = require("../controllers/administrador.controller.js");
 
   var router = require("express").Router();
 
-  // Create a new Tutorial
-  router.post("/administrador", administrador.create);
+  router.post("/administrador", [authJwt.verifyToken], [authJwt.isAdmin], administrador.create);
 
-  // Retrieve all Tutorials
-  router.get("/administrador", administrador.findAll);
+  router.get("/administrador", [authJwt.verifyToken], [authJwt.isAdmin], administrador.findAll);
 
-  // Retrieve a single Tutorial with id
-  router.get("/administrador/:id_adm", administrador.findOne);
+  router.get("/administrador/:id_adm", [authJwt.verifyToken], administrador.findOne);
 
-  // Delete a Tutorial with id
-  router.delete("/administrador/:id_adm", administrador.delete);
+  router.delete("/administrador/:id_adm", [authJwt.verifyToken], administrador.delete);
 
   app.use('/RhBarbearia/', router);
 };
