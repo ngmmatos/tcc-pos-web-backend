@@ -5,15 +5,15 @@ module.exports = app => {
 
   var router = require("express").Router();
 
-  router.post("/fornecedor", [authJwt.verifyToken], fornecedor.create);
+  router.post("/fornecedor", [authJwt.verifyToken], [authJwt.isAdmin], fornecedor.create);
 
-  router.get("/fornecedor", [authJwt.verifyToken], fornecedor.findAll);
+  router.get("/fornecedor", [authJwt.verifyToken], [authJwt.isAdmin], fornecedor.findAll);
 
-  router.get("/fornecedor/:id_fornecedor", [authJwt.verifyToken], fornecedor.findOne);
+  router.get("/fornecedor/:id_fornecedor", [authJwt.verifyToken], [authJwt.isAdmin], fornecedor.findOne);
 
-  router.put("/fornecedor/:id_fornecedor", [authJwt.verifyToken], fornecedor.update);
+  router.put("/fornecedor/:id_fornecedor", [authJwt.verifyToken], [authJwt.isAdmin], fornecedor.update);
 
-  router.delete("/fornecedor/:id_fornecedor", [authJwt.verifyToken], fornecedor.delete);
+  router.delete("/fornecedor/:id_fornecedor", [authJwt.verifyToken], [authJwt.isAdmin], fornecedor.delete);
 
   app.use('/RhBarbearia/', router);
 };

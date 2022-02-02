@@ -5,15 +5,15 @@ module.exports = app => {
 
   var router = require("express").Router();
 
-  router.post("/agenda", [authJwt.verifyToken], agenda.create);
+  router.post("/agenda", [authJwt.verifyToken], [authJwt.isBarber], agenda.create);
 
-  router.get("/agenda", [authJwt.verifyToken], agenda.findAll);
+  router.get("/agenda", [authJwt.verifyToken], [authJwt.isBarber], agenda.findAll);
 
-  router.get("/agenda/:id_agenda", [authJwt.verifyToken], agenda.findOne);
+  router.get("/agenda/:id_agenda", [authJwt.verifyToken], [authJwt.isBarber], agenda.findOne);
 
-  router.put("/agenda/:id_agenda", [authJwt.verifyToken], agenda.update);
+  router.put("/agenda/:id_agenda", [authJwt.verifyToken], [authJwt.isBarber], agenda.update);
 
-  router.delete("/agenda/:id_agenda", [authJwt.verifyToken], agenda.delete);
+  router.delete("/agenda/:id_agenda", [authJwt.verifyToken], [authJwt.isBarber], agenda.delete);
 
   app.use('/RhBarbearia/', router);
 };

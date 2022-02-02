@@ -5,13 +5,13 @@ module.exports = app => {
 
   var router = require("express").Router();
 
-  router.post("/barbeiro", [authJwt.verifyToken], barbeiro.create);
+  router.post("/barbeiro", [authJwt.verifyToken], [authJwt.isAdmin], barbeiro.create);
 
-  router.get("/barbeiro", [authJwt.verifyToken], barbeiro.findAll);
+  router.get("/barbeiro", [authJwt.verifyToken], [authJwt.isAdmin], barbeiro.findAll);
 
-  router.get("/barbeiro/:id_barbeiro", [authJwt.verifyToken], barbeiro.findOne);
+  router.get("/barbeiro/:id_barbeiro", [authJwt.verifyToken], [authJwt.isAdmin], barbeiro.findOne);
 
-  router.delete("/barbeiro/:id_barbeiro", [authJwt.verifyToken], barbeiro.delete);
+  router.delete("/barbeiro/:id_barbeiro", [authJwt.verifyToken], [authJwt.isAdmin], barbeiro.delete);
 
   app.use('/RhBarbearia/', router);
 };

@@ -9,9 +9,9 @@ module.exports = app => {
 
   router.get("/administrador", [authJwt.verifyToken], [authJwt.isAdmin], administrador.findAll);
 
-  router.get("/administrador/:id_adm", [authJwt.verifyToken], administrador.findOne);
+  router.get("/administrador/:id_adm", [authJwt.verifyToken], [authJwt.isAdmin], administrador.findOne);
 
-  router.delete("/administrador/:id_adm", [authJwt.verifyToken], administrador.delete);
+  router.delete("/administrador/:id_adm", [authJwt.verifyToken], [authJwt.isAdmin], administrador.delete);
 
   app.use('/RhBarbearia/', router);
 };
