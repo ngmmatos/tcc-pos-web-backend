@@ -11,7 +11,6 @@ exports.create = (req, res) => {
     data_nascimento: req.body.data_nascimento,
     telefone: req.body.telefone,
     sexo: req.body.sexo,
-    cpf: req.body.cpf,
   };
 
   Usuario.create(usuario)
@@ -32,7 +31,6 @@ exports.findAll = (req, res) => {
   const telefone = req.query.telefone;
   const sexo = req.query.sexo;
   const senha = req.query.senha;
-  const cpf = req.query.cpf;
   var order = req.query.order;
   var orderBy= req.query.orderBy
 
@@ -46,10 +44,9 @@ exports.findAll = (req, res) => {
   var conditionTelefone = telefone ? { telefone: { [Op.like]: `%${telefone}%` } } : null;
   var conditionSexo = sexo ? { sexo: { [Op.like]: `%${sexo}%` } } : null;
   var conditionSenha = senha ? { senha: { [Op.eq]: `${senha}` } } : null;
-  var conditionCpf = cpf ? { cpf: { [Op.eq]: `${cpf}` } } : null;
 
   Usuario.findAll({ where: {
-    [Op.and]: [conditionNome, conditionEmail, conditionTelefone, conditionSexo, conditionSenha, conditionCpf]
+    [Op.and]: [conditionNome, conditionEmail, conditionTelefone, conditionSexo, conditionSenha]
   },
   order: [[`${orderBy}`, `${order}`]],
   limit: req.query.rows

@@ -15,20 +15,6 @@ module.exports = (sequelize, Sequelize) => {
         }
       }
     },
-    cpf: {
-      type: Sequelize.STRING,
-      allowNull: false,
-      unique: true,
-      validate: {
-        notEmpty: {
-          msg: "Campo cpf não pode ser vazio"
-        },
-        is:{
-          args: /^([0-9]{3}\.?[0-9]{3}\.?[0-9]{3}\-?[0-9]{2})$/,
-          msg: "Campo cpf tem de ser um cpf com formato válido"
-        }
-      }
-    },
     email: {
       type: Sequelize.STRING,
       allowNull: false,

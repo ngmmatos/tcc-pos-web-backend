@@ -4,6 +4,9 @@ const Usuario = db.Usuario;
 const Administrador = db.Administrador;
 const Barbeiro = db.Barbeiro;
 const Cliente = db.Cliente;
+const moment = require("moment");
+
+process.env.TZ = "America/Sao_Paulo";
 
 var jwt = require("jsonwebtoken");
 var bcrypt = require("bcryptjs");
@@ -67,13 +70,16 @@ exports.signin = (req, res) => {
         expiresIn: 1800 // 30 minutos
       });
 
+      const expiredAt = moment().add(1800, 'seconds').format();
+
       checkUsers(user).then((data) => {
 
       res.status(200).send({
-        id: user.id_usuario,
-        email: user.email,
-        roles: data,
-        accessToken: token
+        token: token,
+        token_type: "Bearer",
+        expired_at: (new Date(expiredAt).getTime()/1000),
+        user: user,
+        roles: data
           });
         })
       .catch(err => {

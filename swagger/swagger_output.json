@@ -340,11 +340,6 @@
             "type": "string"
           },
           {
-            "name": "cpf",
-            "in": "query",
-            "type": "string"
-          },
-          {
             "name": "order",
             "in": "query",
             "type": "string"
@@ -434,9 +429,6 @@
                   "example": "any"
                 },
                 "sexo": {
-                  "example": "any"
-                },
-                "cpf": {
                   "example": "any"
                 }
               }
@@ -2054,9 +2046,6 @@
                 "type": "string"
                       },
               "sexo": {
-                "type": "string"
-                      },
-              "cpf": {
                 "type": "string"
                       }
                     }
