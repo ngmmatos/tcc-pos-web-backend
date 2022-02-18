@@ -13,6 +13,13 @@ var bcrypt = require("bcryptjs");
 
 const checkUsers = async (x) => {
 
+  // bcrypt.genSalt(10, function(err, salt) {
+  //   bcrypt.hash("524654654", salt, function(err, hash) {
+  //   // returns hash
+  //   console.log(hash);
+  //   });
+  // });
+
   const list_empty = []
 
   const adm = await Administrador.findOne({ where: {id_usuario: x.id_usuario} });
@@ -78,7 +85,14 @@ exports.signin = (req, res) => {
         token: token,
         token_type: "Bearer",
         expired_at: (new Date(expiredAt).getTime()/1000),
-        user: user,
+        user: {
+          id_usuario: user.id_usuario,
+          nome: user.nome,
+          email: user.email,
+          sexo: user.sexo,
+          data_nascimento: user.data_nascimento,
+          telefone: user.telefone
+        },
         roles: data
           });
         })
