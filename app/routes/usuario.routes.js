@@ -5,7 +5,7 @@ module.exports = app => {
 
   var router = require("express").Router();
 
-  router.post("/usuario", [authJwt.verifyToken], usuario.create);
+  router.post("/usuario", usuario.create);
 
   router.get("/usuario", [authJwt.verifyToken], usuario.findAll);
 
