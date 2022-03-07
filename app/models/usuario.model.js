@@ -47,10 +47,6 @@ module.exports = (sequelize, Sequelize) => {
       validate: {
         notEmpty: {
           msg: "Campo senha não pode ser vazio"
-        },
-        len: {
-          args: [6, 8],
-          msg: "Canpo senha deve conter entre 6 e 8 caracteres" 
         }
       }
     },
