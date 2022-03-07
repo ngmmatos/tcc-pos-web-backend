@@ -267,11 +267,6 @@
       },  
       "/usuario": {
         "post": {
-          "security": [
-            {
-            "bearerAuth": []
-            }
-          ],
           "tags": ["Usuario"],
           "summary": "Adicionar novo Usuario",
           "description": "",
@@ -622,11 +617,6 @@
     },
     "/cliente": {
       "post": {
-        "security": [
-          {
-          "bearerAuth": []
-          }
-        ],
         "tags": ["Cliente"],
         "summary": "Adicionar novo cliente",
         "description": "",

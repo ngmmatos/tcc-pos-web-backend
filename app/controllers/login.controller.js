@@ -9,16 +9,9 @@ const moment = require("moment");
 process.env.TZ = "America/Sao_Paulo";
 
 var jwt = require("jsonwebtoken");
-var bcrypt = require("bcryptjs");
+const bcrypt = require('bcryptjs');
 
 const checkUsers = async (x) => {
-
-  // bcrypt.genSalt(10, function(err, salt) {
-  //   bcrypt.hash("524654654", salt, function(err, hash) {
-  //   // returns hash
-  //   console.log(hash);
-  //   });
-  // });
 
   const list_empty = []
 
@@ -54,24 +47,24 @@ exports.signin = (req, res) => {
         return res.status(404).send({ message: "User Not found." });
       }
 
-      // var passwordIsValid = bcrypt.compareSync(
-      //   req.body.senha,
-      //   user.senha
-      // );
-
-      // if (!passwordIsValid) {
-      //   return res.status(401).send({
-      //     accessToken: null,
-      //     message: "Invalid Password!"
-      //   });
-      // }
-
-      if (user.senha !== req.body.senha) {
+      var passwordIsValid = bcrypt.compare(
+        req.body.senha,
+        user.senha
+      );
+      console.log(passwordIsValid)
+      if (!passwordIsValid) {
         return res.status(401).send({
           accessToken: null,
           message: "Invalid Password!"
         });
       }
+
+      // if (user.senha !== req.body.senha) {
+      //   return res.status(401).send({
+      //     accessToken: null,
+      //     message: "Invalid Password!"
+      //   });
+      // }
 
       var token = jwt.sign({ id: user.id_usuario }, process.env.SECRET, {
         expiresIn: 1800 // 30 minutos
