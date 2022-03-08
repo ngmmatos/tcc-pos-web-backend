@@ -9,7 +9,8 @@ exports.create = (req, res) => {
     data: req.body.data,
     periodo: req.body.periodo,
     hr_inicio: req.body.hr_inicio,
-    hr_fim: req.body.hr_fim
+    hr_fim: req.body.hr_fim,
+    agendado: req.body.agenda
   };
 
   Agenda.create(agenda)
@@ -30,6 +31,7 @@ exports.findAll = (req, res) => {
   const periodo = req.query.periodo;
   const hr_inicio = req.query.hr_inicio;
   const hr_fim = req.query.hr_fim;
+  const agendado = req.query.agendado;
   var order = req.query.order;
   var orderBy= req.query.orderBy
 
@@ -41,11 +43,12 @@ exports.findAll = (req, res) => {
   var conditionIdBarbeiro = id_barbeiro ? { id_barbeiro: { [Op.eq]: `${id_barbeiro}` } } : null;
   var conditionData = data ? { data: { [Op.eq]: `${data}` } } : null;
   var conditionPeriodo = periodo ? { periodo: { [Op.eq]: `${periodo}` } } : null;
-  var conditionHrInicio = hr_inicio ? { hr_inicio: { [Op.eq]: `${hr_inicio}` } } : null;
-  var conditionHrFim = hr_fim ? { hr_fim: { [Op.eq]: `${hr_fim}` } } : null;
+  var conditionHrInicio = hr_inicio ? { hr_inicio: { [Op.gte]: `${hr_inicio}` } } : null;
+  var conditionHrFim = hr_fim ? { hr_fim: { [Op.lte]: `${hr_fim}` } } : null;
+  var conditionAgendado = agendado ? { agendado: { [Op.eq]: `${agendado}` } } : null;
 
   Agenda.findAll({ where: {
-    [Op.and]: [conditionIdBarbeiro, conditionData, conditionPeriodo, conditionHrInicio, conditionHrFim]
+    [Op.and]: [conditionIdBarbeiro, conditionData, conditionPeriodo, conditionHrInicio, conditionHrFim, conditionAgendado]
   },
   order: [[`${orderBy}`, `${order}`]],
   limit: req.query.rows,

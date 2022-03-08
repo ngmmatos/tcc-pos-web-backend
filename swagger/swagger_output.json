@@ -124,6 +124,11 @@
             "type": "string"
           },
           {
+            "name": "agendado",
+            "in": "query",
+            "type": "boolean"
+          },
+          {
             "name": "order",
             "in": "query",
             "type": "string"
@@ -212,6 +217,9 @@
                   "example": "any"
                 },
                 "hr_fim": {
+                  "example": "any"
+                },
+                "agendado": {
                   "example": "any"
                 }
               }
@@ -2014,6 +2022,9 @@
             "hr_fim": {
               "type": "integer",
               "format": "int64"
+                    },
+            "agendado": {
+              "type": "boolean"
                     }
                   }
               },

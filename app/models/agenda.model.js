@@ -18,12 +18,7 @@ module.exports = (sequelize, Sequelize) => {
       },
     data: {
       type: Sequelize.INTEGER,
-      allowNull: false,
-      validate: {
-        notEmpty: {
-          msg: "Campo data não pode ser vazio"
-        }
-      }
+      allowNull: true
     },
     periodo: {
       type: Sequelize.STRING,
@@ -54,6 +49,16 @@ module.exports = (sequelize, Sequelize) => {
       validate: {
         notEmpty: {
           msg: "Campo hr_fim não pode ser vazio"
+        }
+      }
+    },
+    agendado: {
+      type: Sequelize.BOOLEAN,
+      allowNull: false,
+      defaultValue: false,
+      validate: {
+        notEmpty: {
+          msg: "Campo agendado não pode ser vazio"
         }
       }
     },
