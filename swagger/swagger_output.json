@@ -2,7 +2,7 @@
   "openapi": "3.0.2",
   "info": {
     "version": "1.0.0",
-    "title": "RH BArbearia",
+    "title": "RH Barbearia",
     "description": "API para gerenciamento do sistema RH Barbearia"
     },
   "servers": [
@@ -315,6 +315,7 @@
           }
         ],
         "tags": ["Usuario"],
+        "summary": "Buscar usuarios",
         "description": "",
         "parameters": [
           {
@@ -371,6 +372,7 @@
           }
         ],
         "tags": ["Usuario"],
+        "summary": "Buscar usuaio por ID",
         "description": "",
         "parameters": [
           {
@@ -402,6 +404,7 @@
           }
         ],
         "tags": ["Usuario"],
+        "summary": "Altera um usuario",
         "description": "",
         "parameters": [
           {
@@ -460,6 +463,7 @@
           }
         ],
         "tags": ["Usuario"],
+        "summary": "Deletar um usuario",
         "description": "",
         "parameters": [
           {
@@ -490,7 +494,7 @@
           }
         ],
         "tags": ["Administrador"],
-        "summary": "Adicionar novo administrador",
+        "summary": "Adicionar novo administrador","summary": "Adicionar novo administrador",
         "description": "",
         "operationId": "addAdministrador",
         "requestBody": 
@@ -529,6 +533,7 @@
           }
         ], 
         "tags": ["Administrador"],
+        "summary": "Busca administradores",
         "description": "",
         "parameters": [
           {
@@ -570,6 +575,7 @@
           }
         ],
         "tags": ["Administrador"],
+        "summary": "Busca administrador por ID",
         "description": "",
         "parameters": [
           {
@@ -601,6 +607,7 @@
           }
         ],
         "tags": ["Administrador"],
+        "summary": "Exclui um administrador",
         "description": "",
         "parameters": [
           {
@@ -665,6 +672,7 @@
           }
         ],
         "tags": ["Cliente"],
+        "summary": "Busca clientes",
         "description": "",
         "parameters": [
           {
@@ -706,6 +714,7 @@
           }
         ],
         "tags": ["Cliente"],
+        "summary": "Busca cliente por ID",
         "description": "",
         "parameters": [
           {
@@ -737,6 +746,7 @@
           }
         ],
         "tags": ["Cliente"],
+        "summary": "Exclui cliente",
         "description": "",
         "parameters": [
           {
@@ -806,6 +816,7 @@
           }
         ],
         "tags": ["Barbeiro"],
+        "summary": "Busca barbeiros",
         "description": "",
         "parameters": [
           {
@@ -847,6 +858,7 @@
           }
         ],
         "tags": ["Barbeiro"],
+        "summary": "Busca barbeiro por ID",
         "description": "",
         "parameters": [
           {
@@ -878,6 +890,7 @@
           }
         ],
         "tags": ["Barbeiro"],
+        "summary": "Exclui barbeiro",
         "description": "",
         "parameters": [
           {
@@ -947,6 +960,7 @@
           }
         ],
         "tags": ["Agendamento"],
+        "summary": "Busca agendamentos",
         "description": "",
         "parameters": [
           {
@@ -998,6 +1012,7 @@
           }
         ],
         "tags": ["Agendamento"],
+        "summary": "Busca agendamento por ID",
         "description": "",
         "parameters": [
           {
@@ -1029,6 +1044,7 @@
           }
         ],
         "tags": ["Agendamento"],
+        "summary": "Altera agendamento",
         "description": "",
         "parameters": [
           {
@@ -1081,6 +1097,7 @@
           }
         ],
         "tags": ["Agendamento"],
+        "summary": "Deleta agendamento",
         "description": "",
         "parameters": [
           {
@@ -1150,6 +1167,7 @@
           }
         ],
         "tags": ["Fornecedor"],
+        "summary": "Busca fornecedores",
         "description": "",
         "parameters": [
           {
@@ -1196,6 +1214,7 @@
           }
         ],
         "tags": ["Fornecedor"],
+        "summary": "Busca fornecedore por ID",
         "description": "",
         "parameters": [
           {
@@ -1227,6 +1246,7 @@
           }
         ],
         "tags": ["Fornecedor"],
+        "summary": "Altera fornecedor",
         "description": "",
         "parameters": [
           {
@@ -1276,6 +1296,7 @@
           }
         ],
         "tags": ["Fornecedor"],
+        "summary": "Exclui fornecedor",
         "description": "",
         "parameters": [
           {
@@ -1348,6 +1369,7 @@
           }
         ],
         "tags": ["Insumo"],
+        "summary": "Busca insumos",
         "description": "",
         "parameters": [
           {
@@ -1394,6 +1416,7 @@
           }
         ],
         "tags": ["Insumo"],
+        "summary": "Busca insumo por ID",
         "description": "",
         "parameters": [
           {
@@ -1425,6 +1448,7 @@
           }
         ],
         "tags": ["Insumo"],
+        "summary": "Altera insumo",
         "description": "",
         "parameters": [
           {
@@ -1477,6 +1501,7 @@
           }
         ],
         "tags": ["Insumo"],
+        "summary": "Deletainsumo",
         "description": "",
         "parameters": [
           {
@@ -1546,6 +1571,7 @@
           }
         ],
         "tags": ["Procedimento"],
+        "summary": "Busca procedimentos",
         "description": "",
         "parameters": [
           {
@@ -1597,6 +1623,7 @@
           }
         ],
         "tags": ["Procedimento"],
+        "summary": "Busca procedimento por ID",
         "description": "",
         "parameters": [
           {
@@ -1628,6 +1655,7 @@
           }
         ],
         "tags": ["Procedimento"],
+        "summary": "ALtera procedimento",
         "description": "",
         "parameters": [
           {
@@ -1680,6 +1708,7 @@
           }
         ],
         "tags": ["Procedimento"],
+        "summary": "Deleta procedimento",
         "description": "",
         "parameters": [
           {
@@ -1749,6 +1778,7 @@
           }
         ],
         "tags": ["InsumoProcedimento"],
+        "summary": "Busca insumo-Procedimentos",
         "description": "",
         "parameters": [
           {
@@ -1790,6 +1820,7 @@
           }
         ],
         "tags": ["InsumoProcedimento"],
+        "summary": "Busca insumo-Procedimento por ID",
         "description": "",
         "parameters": [
           {
@@ -1821,6 +1852,7 @@
           }
         ],
         "tags": ["InsumoProcedimento"],
+        "summary": "Deleta insumo-Procedimento",
         "description": "",
         "parameters": [
           {
@@ -1890,6 +1922,7 @@
           }
         ],
         "tags": ["ProcedimentoAgendamento"],
+        "summary": "Busca procedimento-Agendamentos",
         "description": "",
         "parameters": [
           {
@@ -1931,6 +1964,7 @@
           }
         ],
         "tags": ["ProcedimentoAgendamento"],
+        "summary": "Busca procedimento-Agendamento por ID",
         "description": "",
         "parameters": [
           {
@@ -1962,6 +1996,7 @@
           }
         ],
         "tags": ["ProcedimentoAgendamento"],
+        "summary": "Deleta procedimento-Agendamento",
         "description": "",
         "parameters": [
           {
