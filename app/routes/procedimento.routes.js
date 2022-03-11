@@ -7,9 +7,9 @@ module.exports = app => {
 
   router.post("/procedimento", [authJwt.verifyToken], [authJwt.isAdmin], procedimento.create);
 
-  router.get("/procedimento", [authJwt.verifyToken], [authJwt.isAdmin], procedimento.findAll);
+  router.get("/procedimento", [authJwt.verifyToken], procedimento.findAll);
 
-  router.get("/procedimento/:id_procedimento", [authJwt.verifyToken], [authJwt.isAdmin], procedimento.findOne);
+  router.get("/procedimento/:id_procedimento", [authJwt.verifyToken], procedimento.findOne);
 
   router.put("/procedimento/:id_procedimento", [authJwt.verifyToken], [authJwt.isAdmin], procedimento.update);
 

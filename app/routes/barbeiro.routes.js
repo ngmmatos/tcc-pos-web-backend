@@ -7,9 +7,9 @@ module.exports = app => {
 
   router.post("/barbeiro", [authJwt.verifyToken], [authJwt.isAdmin], barbeiro.create);
 
-  router.get("/barbeiro", [authJwt.verifyToken], [authJwt.isAdmin], barbeiro.findAll);
+  router.get("/barbeiro", [authJwt.verifyToken], barbeiro.findAll);
 
-  router.get("/barbeiro/:id_barbeiro", [authJwt.verifyToken], [authJwt.isAdmin], barbeiro.findOne);
+  router.get("/barbeiro/:id_barbeiro", [authJwt.verifyToken], barbeiro.findOne);
 
   router.delete("/barbeiro/:id_barbeiro", [authJwt.verifyToken], [authJwt.isAdmin], barbeiro.delete);
 

@@ -7,9 +7,9 @@ module.exports = app => {
 
   router.post("/procedimentoAgendamento", [authJwt.verifyToken], [authJwt.isAdmin], procedimentoAgendamento.create);
 
-  router.get("/procedimentoAgendamento", [authJwt.verifyToken], [authJwt.isAdmin], procedimentoAgendamento.findAll);
+  router.get("/procedimentoAgendamento", [authJwt.verifyToken], procedimentoAgendamento.findAll);
 
-  router.get("/procedimentoAgendamento/:id_procedimento_agendamento", [authJwt.verifyToken], [authJwt.isAdmin], procedimentoAgendamento.findOne);
+  router.get("/procedimentoAgendamento/:id_procedimento_agendamento", [authJwt.verifyToken], procedimentoAgendamento.findOne);
 
   router.delete("/procedimentoAgendamento/:id_procedimento_agendamento", [authJwt.verifyToken], [authJwt.isAdmin], procedimentoAgendamento.delete);
 
