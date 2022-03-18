@@ -197,34 +197,18 @@
             "in": "path",
             "required": true,
             "type": "string"
-          },
+          }],
+        "requestBody": 
           {
-            "name": "obj",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "id_barbeiro": {
-                  "example": "any"
-                },
-                "data": {
-                  "example": "any"
-                },
-                "periodo": {
-                  "example": "any"
-                },
-                "hr_inicio": {
-                  "example": "any"
-                },
-                "hr_fim": {
-                  "example": "any"
-                },
-                "agendado": {
-                  "example": "any"
-                }
-              }
-             }
-          }],   
+            "required": true,
+            "content": {
+              "application/json":{
+                "schema":{
+                    "$ref": "#/components/schemas/Agenda"
+                        }
+                      }
+                    }
+                  },   
         "responses": {
           "200": {
             "description": "Success"
@@ -412,35 +396,19 @@
             "in": "path",
             "required": true,
             "type": "string"
-          },
-          {
-            "name": "obj",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "nome": {
-                  "example": "any"
-                },
-                "email": {
-                  "example": "any"
-                },
-                "senha": {
-                  "example": "any"
-                },
-                "data_nascimento": {
-                  "example": "any"
-                },
-                "telefone": {
-                  "example": "any"
-                },
-                "sexo": {
-                  "example": "any"
-                }
-              }
-            }
           }
         ],
+        "requestBody": 
+        {
+          "required": true,
+          "content": {
+            "application/json":{
+              "schema":{
+                  "$ref": "#/components/schemas/Usuario"
+                      }
+                    }
+                  }
+                },
         "responses": {
           "200": {
             "description": "Success"
@@ -1052,29 +1020,18 @@
             "in": "path",
             "required": true,
             "type": "string"
-          },
+          }],
+        "requestBody": 
           {
-            "name": "obj",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "id_agenda": {
-                  "example": "any"
-                },
-                "id_cliente": {
-                  "example": "any"
-                },
-                "data_realizacao": {
-                  "example": "any"
-                },
-                "data_agendamento": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
+            "required": true,
+            "content": {
+              "application/json":{
+                "schema":{
+                    "$ref": "#/components/schemas/Agendamento"
+                        }
+                      }
+                    }
+                  },
         "responses": {
           "200": {
             "description": "Success"
@@ -1254,26 +1211,18 @@
             "in": "path",
             "required": true,
             "type": "string"
-          },
+          }],
+        "requestBody": 
           {
-            "name": "obj",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "telefone": {
-                  "example": "any"
-                },
-                "fornecedor": {
-                  "example": "any"
-                },
-                "email": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
+            "required": true,
+            "content": {
+              "application/json":{
+                "schema":{
+                    "$ref": "#/components/schemas/Fornecedor"
+                        }
+                      }
+                    }
+                  },
         "responses": {
           "200": {
             "description": "Success"
@@ -1456,29 +1405,18 @@
             "in": "path",
             "required": true,
             "type": "string"
-          },
+          }],
+        "requestBody": 
           {
-            "name": "obj",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "id_fornecedor": {
-                  "example": "any"
-                },
-                "insumo": {
-                  "example": "any"
-                },
-                "estoque": {
-                  "example": "any"
-                },
-                "ultimo_valor": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
+            "required": true,
+            "content": {
+              "application/json":{
+                "schema":{
+                    "$ref": "#/components/schemas/Insumo"
+                        }
+                      }
+                    }
+                  }, 
         "responses": {
           "200": {
             "description": "Success"
@@ -1663,29 +1601,18 @@
             "in": "path",
             "required": true,
             "type": "string"
-          },
+          }],
+        "requestBody": 
           {
-            "name": "obj",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "procedimento": {
-                  "example": "any"
-                },
-                "valor": {
-                  "example": "any"
-                },
-                "tempo_medio": {
-                  "example": "any"
-                },
-                "descricao": {
-                  "example": "any"
-                }
-              }
-            }
-          }
-        ],
+            "required": true,
+            "content": {
+              "application/json":{
+                "schema":{
+                    "$ref": "#/components/schemas/Procedimento"
+                        }
+                      }
+                    }
+                  },
         "responses": {
           "200": {
             "description": "Success"
