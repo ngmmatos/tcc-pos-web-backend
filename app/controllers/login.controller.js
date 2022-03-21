@@ -47,7 +47,12 @@ exports.signin = (req, res) => {
         return res.status(404).send({ message: "User Not found." });
       }
 
-      var passwordIsValid = bcrypt.compare(
+      const senha = 'vaicurintia' 
+      const salt = bcrypt.genSaltSync(10);
+      const passHash = bcrypt.hashSync(senha, salt);  
+      console.log(passHash)
+
+      var passwordIsValid = bcrypt.compareSync(
         req.body.senha,
         user.senha
       );
