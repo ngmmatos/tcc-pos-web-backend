@@ -1,7 +1,10 @@
 const db = require("../models");
+const usuarioModel = require("../models/usuario.model");
 const Agendamento = db.Agendamento;
 const Agenda = db.Agenda;
 const Cliente = db.Cliente;
+const Barbeiro = db.Barbeiro;
+const Usuario = db.Usuario;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new Tutorial
@@ -59,8 +62,21 @@ exports.findAll = (req, res) => {
   },
   order: [[`${orderBy}`, `${order}`]],
   limit: req.query.rows,
-  include: [{ all: true}],
-  })
+  include: [{
+    model: Agenda,
+    include: [{
+      model: Barbeiro,
+      include: [{
+        model: Usuario,
+      }],
+    }],
+  },{
+    model: Cliente,
+    include: [{
+      model: Usuario,
+      }],
+    }],
+    })
     .then(data => {
       res.send(data);
     })
