@@ -17,18 +17,18 @@ const checkUsers = async (x) => {
 
   const adm = await Administrador.findOne({ where: {id_usuario: x.id_usuario} });
   if (adm !== null) {
-    list_empty.push("admin");
+    list_empty.push({"admin": adm.id_adm});
   }
 
   const barb = await Barbeiro.findOne({ where: {id_usuario: x.id_usuario} });
   
   if (barb !== null) {
-    list_empty.push("barbeiro");
+    list_empty.push({"barbeiro": barb.id_barbeiro});
   }
 
   const cli = await Cliente.findOne({ where: {id_usuario: x.id_usuario} });
   if (cli !== null) {
-    list_empty.push("cliente");
+    list_empty.push({"cliente": cli.id_cliente});
     }
 
   return list_empty
