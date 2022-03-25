@@ -7,7 +7,7 @@
     },
   "servers": [
     {
-      "url": "http:/RhBarbearia",
+      "url": "https:/RhBarbearia",
       "description": "Basic"
     }
    ],
@@ -1950,7 +1950,7 @@
   "components": {
     "securitySchemes": {
       "bearerAuth": {        
-        "type": "http",
+        "type": "https",
         "scheme": "bearer",
         "bearerFormat": "JWT"
         }
