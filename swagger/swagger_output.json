@@ -129,6 +129,11 @@
             "type": "boolean"
           },
           {
+            "name": "minutos_disponiveis",
+            "in": "query",
+            "type": "integer"
+          },
+          {
             "name": "order",
             "in": "query",
             "type": "string"
@@ -1987,6 +1992,10 @@
                     },
             "agendado": {
               "type": "boolean"
+                    },
+            "minutos_disponiveis": {
+              "type": "integer",
+              "format": "int64"
                     }
                   }
               },

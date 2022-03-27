@@ -10,7 +10,8 @@ exports.create = (req, res) => {
     periodo: req.body.periodo,
     hr_inicio: req.body.hr_inicio,
     hr_fim: req.body.hr_fim,
-    agendado: req.body.agenda
+    agendado: req.body.agenda,
+    minutos_disponiveis: req.body.minutos_disponiveis,
   };
 
   Agenda.create(agenda)
@@ -32,6 +33,7 @@ exports.findAll = (req, res) => {
   const hr_inicio = req.query.hr_inicio;
   const hr_fim = req.query.hr_fim;
   const agendado = req.query.agendado;
+  const minutos_disponiveis = req.query.minutos_disponiveis;
   var order = req.query.order;
   var orderBy= req.query.orderBy
 
@@ -46,9 +48,10 @@ exports.findAll = (req, res) => {
   var conditionHrInicio = hr_inicio ? { hr_inicio: { [Op.gte]: `${hr_inicio}` } } : null;
   var conditionHrFim = hr_fim ? { hr_fim: { [Op.lte]: `${hr_fim}` } } : null;
   var conditionAgendado = agendado ? { agendado: { [Op.eq]: `${agendado}` } } : null;
+  var conditionMinutos = minutos_disponiveis ? { minutos_disponiveis: { [Op.gte]: `${minutos_disponiveis}` } } : null;
 
   Agenda.findAll({ where: {
-    [Op.and]: [conditionIdBarbeiro, conditionData, conditionPeriodo, conditionHrInicio, conditionHrFim, conditionAgendado]
+    [Op.and]: [conditionIdBarbeiro, conditionData, conditionPeriodo, conditionHrInicio, conditionHrFim, conditionAgendado, conditionMinutos]
   },
   order: [[`${orderBy}`, `${order}`]],
   limit: req.query.rows,

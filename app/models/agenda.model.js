@@ -62,6 +62,16 @@ module.exports = (sequelize, Sequelize) => {
         }
       }
     },
+    minutos_disponiveis: {
+      type: Sequelize.INTEGER,
+      allowNull: false,
+      defaultValue: 60,
+      validate: {
+        notEmpty: {
+          msg: "Campo minutos disponiveis não pode ser vazio"
+        }
+      }
+    },
   },{
     timestamps: false,
     freezeTableName: true
