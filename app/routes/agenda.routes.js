@@ -11,7 +11,7 @@ module.exports = app => {
 
   router.get("/agenda/:id_agenda", [authJwt.verifyToken], agenda.findOne);
 
-  router.put("/agenda/:id_agenda", [authJwt.verifyToken], [authJwt.isBarber], agenda.update);
+  router.put("/agenda/:id_agenda", [authJwt.verifyToken], agenda.update);
 
   router.delete("/agenda/:id_agenda", [authJwt.verifyToken], [authJwt.isBarber], agenda.delete);
 
