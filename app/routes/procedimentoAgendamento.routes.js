@@ -5,13 +5,13 @@ module.exports = app => {
 
   var router = require("express").Router();
 
-  router.post("/procedimentoAgendamento", [authJwt.verifyToken], [authJwt.isAdmin], procedimentoAgendamento.create);
+  router.post("/procedimentoAgendamento", [authJwt.verifyToken], procedimentoAgendamento.create);
 
   router.get("/procedimentoAgendamento", [authJwt.verifyToken], procedimentoAgendamento.findAll);
 
   router.get("/procedimentoAgendamento/:id_procedimento_agendamento", [authJwt.verifyToken], procedimentoAgendamento.findOne);
 
-  router.delete("/procedimentoAgendamento/:id_procedimento_agendamento", [authJwt.verifyToken], [authJwt.isAdmin], procedimentoAgendamento.delete);
+  router.delete("/procedimentoAgendamento/:id_procedimento_agendamento", [authJwt.verifyToken], procedimentoAgendamento.delete);
 
   app.use('/RhBarbearia/', router);
 };
