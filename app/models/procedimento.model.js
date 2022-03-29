@@ -45,6 +45,5 @@ module.exports = (sequelize, Sequelize) => {
     timestamps: false,
     freezeTableName: true
   });
-  Procedimento.belongsToMany(Agendamento, { through: ProcedimentoAgendamento});
   return Procedimento;
 };

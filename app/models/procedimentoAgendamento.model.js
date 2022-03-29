@@ -11,7 +11,7 @@ module.exports = (sequelize, Sequelize) => {
     id_procedimento: {
       type: Sequelize.INTEGER,
       allowNull: false,
-      references: { model: 'Procedimento', key: 'id_procedimento' },
+      references: { model: Procedimento, key: 'id_procedimento' },
       validate: {
         notEmpty: {
           msg: "Campo id_procedimento não pode ser vazio"
@@ -21,7 +21,7 @@ module.exports = (sequelize, Sequelize) => {
     id_agendamento: {
       type: Sequelize.INTEGER,
       allowNull: false,
-      references: { model: 'Agendamento', key: 'id_agendamento' },
+      references: { model: Agendamento, key: 'id_agendamento' },
       validate: {
         notEmpty: {
           msg: "Campo id_agendamento não pode ser vazio"
@@ -32,5 +32,15 @@ module.exports = (sequelize, Sequelize) => {
     timestamps: false,
     freezeTableName: true
   });
+  ProcedimentoAgendamento.associate = (models) => {
+    ProcedimentoAgendamento.belongsTo(models.Agendamento, {
+      foreignKey: 'id_agendamento'
+    });
+    ProcedimentoAgendamento.belongsTo(models.Procedimento, {
+       foreignKey: 'id_procedimento'
+    });
+  };
   return ProcedimentoAgendamento;
 };
+
+

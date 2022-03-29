@@ -2,6 +2,10 @@ const db = require("../models");
 const ProcedimentoAgendamento = db.ProcedimentoAgendamento;
 const Agendamento = db.Agendamento;
 const Procedimento = db.Procedimento;
+const Agenda = db.Agenda;
+const Barbeiro = db.Barbeiro;
+const Cliente = db.Cliente;
+const Usuario = db.Usuario;
 const Op = db.Sequelize.Op;
 
 exports.create = (req, res) => {
@@ -42,8 +46,25 @@ exports.findAll = (req, res) => {
   },
   order: [[`${orderBy}`, `${order}`]],
   limit: req.query.rows,
-  include: [{ all: true}],
-  })
+  include: [{
+    model: Agendamento,
+    include: [{
+      model: Agenda,
+      include: [{
+        model: Usuario,
+          include: [{
+            model: Barbeiro,
+        }],
+      }],
+      model: Cliente,
+      include: [{
+        model: Usuario,
+        }],
+    }],
+  },{
+    model: Procedimento,
+    }],
+    })
     .then(data => {
       res.send(data);
     })
