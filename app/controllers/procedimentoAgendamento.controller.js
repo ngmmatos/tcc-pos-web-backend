@@ -49,17 +49,17 @@ exports.findAll = (req, res) => {
   include: [{
     model: Agendamento,
     include: [{
-      model: Agenda,
-      include: [{
-        model: Usuario,
-          include: [{
-            model: Barbeiro,
-        }],
-      }],
       model: Cliente,
       include: [{
         model: Usuario,
         }],
+      model: Agenda,
+      include: [{
+        model: Barbeiro,
+          include: [{
+            model: Usuario,
+        }],
+      }],
     }],
   },{
     model: Procedimento,
