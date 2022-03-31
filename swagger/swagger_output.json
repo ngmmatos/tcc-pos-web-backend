@@ -47,7 +47,92 @@
               }
             }
           }
-        }, 
+        },
+      "/recuperaSenha": {
+        "get": {
+          "security":[
+            {
+            "basicAuth": []
+            }
+            ],
+            "tags": ["Recupera Senha"],
+            "summary": "Busca usuário para recuperação de senha",
+            "description": "Busca usuário para recuperação de senha",
+            "parameters": [
+              {
+                "name": "email",
+                "in": "query",
+                "type": "string"
+              },
+              {
+                "name": "token_senha",
+                "in": "query",
+                "type": "string"
+              }
+            ],
+            "responses": {
+              "200": {
+                "description": "Success"
+              },
+              "201": {
+                "description": "Created"
+              },
+              "500": {
+                "description": "Internal Server Error"
+                },
+              "400": {
+                "description": "Bad Request"
+              },
+              "401": {
+                "description": "Unauthorized"
+                }
+              }
+            }
+          },
+          "/recuperaSenha/{id_usuario}": {
+            "put": {
+              "security":[
+                {
+                "basicAuth": []
+                }
+              ],
+              "tags": ["Recupera Senha"],
+              "summary": "Altera a senha de um usuario, depois de analise",
+              "description": "Altera a senha de um usuario, depois de analise",
+              "parameters": [
+                {
+                  "name": "id_usuario",
+                  "in": "path",
+                  "required": true,
+                  "type": "string"
+                }],
+              "requestBody": 
+              {
+                "required": true,
+                "content": {
+                  "application/json":{
+                    "schema":{
+                        "$ref": "#/components/schemas/RecuperaSenha"
+                            }
+                          }
+                        }
+                      },   
+              "responses": {
+                "200": {
+                  "description": "Success"
+                },
+                "401": {
+                  "description": "Unauthorized"
+                },
+                "404": {
+                  "description": "Not Found"
+                },
+                "500": {
+                  "description": "Internal Server Error"
+                  }
+                }
+              }
+            },
       "/agenda": {
         "post": {
           "security": [
@@ -70,24 +155,57 @@
                       }
                     }
                   },
-          "responses": {
-            "200": {
-              "description": "Success"
+                  "responses": {
+                    "200": {
+                      "description": "Success"
+                    },
+                    "500": {
+                      "description": "Internal Server Error"
+                    }
+                }
             },
-            "201": {
-              "description": "Created"
-            },
-            "500": {
-              "description": "Internal Server Error"
-              },
-            "400": {
-              "description": "Bad Request"
-            },
-            "401": {
-              "description": "Unauthorized"
-              }
-            }
+      "put": {
+        "security": [
+          {
+          "bearerAuth": []
+          }
+        ],
+        "tags": ["Agenda"],
+        "summary": "Altera uma agenda",
+        "description": "Cria nova entrada de agenda",
+        "parameters": [
+          {
+            "name": "id_agenda",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }],
+        "requestBody": 
+          {
+            "required": true,
+            "content": {
+              "application/json":{
+                "schema":{
+                    "$ref": "#/components/schemas/Agenda"
+                        }
+                      }
+                    }
+                  },   
+        "responses": {
+          "200": {
+            "description": "Success"
           },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+            }
+          }
+        },
       "get": {
         "security": [
           {
@@ -1958,7 +2076,12 @@
         "type": "https",
         "scheme": "bearer",
         "bearerFormat": "JWT"
-        }
+        },
+      "basicAuth": {
+        "type": "https",
+        "scheme": "basic",
+        "basicFormat":  "Basic <username:password>"
+      }  
       },
     "schemas": {
       "Login": {
@@ -1967,6 +2090,14 @@
           "email": {
             "type": "string"
           },
+          "senha": {
+            "type": "string"
+                  }
+              }
+          },
+      "RecuperaSenha": {
+        "type": "object",
+        "properties": {
           "senha": {
             "type": "string"
                   }

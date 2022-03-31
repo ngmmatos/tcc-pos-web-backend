@@ -11,20 +11,40 @@ verifyToken = (req, res, next) => {
 
   if (!token) {
     return res.status(403).send({
-      message: "No token provided!"
+      message: "Nenhum token encontrado!"
     });
   }
 
   jwt.verify(token.replace('Bearer ',''), process.env.SECRET, (err, decoded) => {
     if (err) {
       return res.status(401).send({
-        message: "Unauthorized!"
+        message: "Não autorizado!"
       });
     }
     req.id_usuario = decoded.id;
 
     next();
   });
+};
+
+verifyLocal = (req, res, next) => {
+
+  let token = (req.headers["authorization"]);
+
+  if (!token) {
+    return res.status(403).send({
+      message: "Nenhum token encontrado!"
+    });
+  }
+  
+  const base = Buffer.from((token.split(" ")[1]), 'base64').toString('ascii')
+  
+  if (base !== `${process.env.API_USER}:${process.env.API_PASS}`) {
+    return res.status(401).send({
+      message: "Não autorizado!"
+    });
+  }
+  next();
 };
 
 isAdmin = async (req, res, next) => {
@@ -88,5 +108,6 @@ const authJwt = {
   verifyToken: verifyToken,
   isAdmin: isAdmin,
   isBarber: isBarber,
+  verifyLocal: verifyLocal
 };
 module.exports = authJwt;

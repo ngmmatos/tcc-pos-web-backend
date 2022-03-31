@@ -67,6 +67,14 @@ module.exports = (sequelize, Sequelize) => {
           msg: "Campo telefone não pode ser vazio"
         }
       }
+    },
+    token_senha: {
+      type: Sequelize.STRING,
+      allowNull: true
+    }, 
+    dt_token_senha: {
+      type: Sequelize.INTEGER,
+      allowNull: true,
     }, 
   }, {
     timestamps: false,
