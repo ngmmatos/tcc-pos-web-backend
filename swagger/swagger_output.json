@@ -138,7 +138,10 @@
           "security": [
             {
             "bearerAuth": []
-            }
+            },
+            {
+              "basicAuth": []
+              }
           ],
           "tags": ["Agenda"],
           "summary": "Adicionar nova entrada de agenda",
@@ -168,7 +171,10 @@
         "security": [
           {
           "bearerAuth": []
-          }
+          },
+          {
+            "basicAuth": []
+            }
         ],
         "tags": ["Agenda"],
         "summary": "Altera uma agenda",
@@ -210,7 +216,10 @@
         "security": [
           {
           "bearerAuth": []
-          }
+          },
+          {
+            "basicAuth": []
+            }
         ],
         "tags": ["Agenda"],
         "summary": "Buscar agenda",
@@ -277,7 +286,10 @@
         "security": [
           {
           "bearerAuth": []
-          }
+          },
+          {
+            "basicAuth": []
+            }
         ],
         "tags": ["Agenda"],
         "summary": "Buscar agenda por ID",
@@ -309,7 +321,10 @@
         "security": [
           {
           "bearerAuth": []
-          }
+          },
+          {
+            "basicAuth": []
+            }
         ],
         "tags": ["Agenda"],
         "summary": "Altera uma agenda",
@@ -351,7 +366,10 @@
         "security": [
           {
           "bearerAuth": []
-          }
+          },
+          {
+            "basicAuth": []
+            }
         ],
         "tags": ["Agenda"],
         "summary": "Deleta agenda",
@@ -419,7 +437,10 @@
         "security": [
           {
           "bearerAuth": []
-          }
+          },
+          {
+            "basicAuth": []
+            }
         ],
         "tags": ["Usuario"],
         "summary": "Buscar usuarios",
@@ -476,7 +497,10 @@
         "security": [
           {
           "bearerAuth": []
-          }
+          },
+          {
+            "basicAuth": []
+            }
         ],
         "tags": ["Usuario"],
         "summary": "Buscar usuaio por ID",
@@ -508,7 +532,10 @@
         "security": [
           {
           "bearerAuth": []
-          }
+          },
+          {
+            "basicAuth": []
+            }
         ],
         "tags": ["Usuario"],
         "summary": "Altera um usuario",
@@ -551,7 +578,10 @@
         "security": [
           {
           "bearerAuth": []
-          }
+          },
+          {
+            "basicAuth": []
+            }
         ],
         "tags": ["Usuario"],
         "summary": "Deletar um usuario",
@@ -582,7 +612,10 @@
         "security": [
           {
           "bearerAuth": []
-          }
+          },
+          {
+            "basicAuth": []
+            }
         ],
         "tags": ["Administrador"],
         "summary": "Adicionar novo administrador","summary": "Adicionar novo administrador",
@@ -621,7 +654,10 @@
         "security": [
           {
           "bearerAuth": []
-          }
+          },
+          {
+            "basicAuth": []
+            }
         ], 
         "tags": ["Administrador"],
         "summary": "Busca administradores",
@@ -663,7 +699,10 @@
         "security": [
           {
           "bearerAuth": []
-          }
+          },
+          {
+            "basicAuth": []
+            }
         ],
         "tags": ["Administrador"],
         "summary": "Busca administrador por ID",
@@ -695,7 +734,10 @@
         "security": [
           {
           "bearerAuth": []
-          }
+          },
+          {
+            "basicAuth": []
+            }
         ],
         "tags": ["Administrador"],
         "summary": "Exclui um administrador",
@@ -760,7 +802,10 @@
         "security": [
           {
           "bearerAuth": []
-          }
+          },
+          {
+            "basicAuth": []
+            }
         ],
         "tags": ["Cliente"],
         "summary": "Busca clientes",
@@ -802,7 +847,10 @@
         "security": [
           {
           "bearerAuth": []
-          }
+          },
+          {
+            "basicAuth": []
+            }
         ],
         "tags": ["Cliente"],
         "summary": "Busca cliente por ID",
@@ -834,7 +882,10 @@
         "security": [
           {
           "bearerAuth": []
-          }
+          },
+          {
+            "basicAuth": []
+            }
         ],
         "tags": ["Cliente"],
         "summary": "Exclui cliente",
@@ -865,7 +916,10 @@
         "security": [
           {
           "bearerAuth": []
-          }
+          },
+          {
+            "basicAuth": []
+            }
         ],
         "tags": ["Barbeiro"],
         "summary": "Adicionar novo barbeiro",
@@ -904,7 +958,10 @@
         "security": [
           {
           "bearerAuth": []
-          }
+          },
+          {
+            "basicAuth": []
+            }
         ],
         "tags": ["Barbeiro"],
         "summary": "Busca barbeiros",
@@ -946,7 +1003,10 @@
         "security": [
           {
           "bearerAuth": []
-          }
+          },
+          {
+            "basicAuth": []
+            }
         ],
         "tags": ["Barbeiro"],
         "summary": "Busca barbeiro por ID",
@@ -978,7 +1038,10 @@
         "security": [
           {
           "bearerAuth": []
-          }
+          },
+          {
+            "basicAuth": []
+            }
         ],
         "tags": ["Barbeiro"],
         "summary": "Exclui barbeiro",
@@ -1009,7 +1072,10 @@
         "security": [
           {
           "bearerAuth": []
-          }
+          },
+          {
+            "basicAuth": []
+            }
         ],
         "tags": ["Agendamento"],
         "summary": "Adicionar novo agendamento",
@@ -1048,7 +1114,10 @@
         "security": [
           {
           "bearerAuth": []
-          }
+          },
+          {
+            "basicAuth": []
+            }
         ],
         "tags": ["Agendamento"],
         "summary": "Busca agendamentos",
@@ -1100,7 +1169,10 @@
         "security": [
           {
           "bearerAuth": []
-          }
+          },
+          {
+            "basicAuth": []
+            }
         ],
         "tags": ["Agendamento"],
         "summary": "Busca agendamento por ID",
@@ -1132,7 +1204,10 @@
         "security": [
           {
           "bearerAuth": []
-          }
+          },
+          {
+            "basicAuth": []
+            }
         ],
         "tags": ["Agendamento"],
         "summary": "Altera agendamento",
@@ -1174,7 +1249,10 @@
         "security": [
           {
           "bearerAuth": []
-          }
+          },
+          {
+            "basicAuth": []
+            }
         ],
         "tags": ["Agendamento"],
         "summary": "Deleta agendamento",
@@ -1205,7 +1283,10 @@
         "security": [
           {
           "bearerAuth": []
-          }
+          },
+          {
+            "basicAuth": []
+            }
         ],
         "tags": ["Fornecedor"],
         "summary": "Adicionar novo fornecedor",
@@ -1244,7 +1325,10 @@
         "security": [
           {
           "bearerAuth": []
-          }
+          },
+          {
+            "basicAuth": []
+            }
         ],
         "tags": ["Fornecedor"],
         "summary": "Busca fornecedores",
@@ -1291,7 +1375,10 @@
         "security": [
           {
           "bearerAuth": []
-          }
+          },
+          {
+            "basicAuth": []
+            }
         ],
         "tags": ["Fornecedor"],
         "summary": "Busca fornecedore por ID",
@@ -1323,7 +1410,10 @@
         "security": [
           {
           "bearerAuth": []
-          }
+          },
+          {
+            "basicAuth": []
+            }
         ],
         "tags": ["Fornecedor"],
         "summary": "Altera fornecedor",
@@ -1365,7 +1455,10 @@
         "security": [
           {
           "bearerAuth": []
-          }
+          },
+          {
+            "basicAuth": []
+            }
         ],
         "tags": ["Fornecedor"],
         "summary": "Exclui fornecedor",
@@ -1399,7 +1492,10 @@
         "security": [
           {
           "bearerAuth": []
-          }
+          },
+          {
+            "basicAuth": []
+            }
         ],
         "tags": ["Insumo"],
         "summary": "Adicionar novo insumo",
@@ -1438,7 +1534,10 @@
         "security": [
           {
           "bearerAuth": []
-          }
+          },
+          {
+            "basicAuth": []
+            }
         ],
         "tags": ["Insumo"],
         "summary": "Busca insumos",
@@ -1485,7 +1584,10 @@
         "security": [
           {
           "bearerAuth": []
-          }
+          },
+          {
+            "basicAuth": []
+            }
         ],
         "tags": ["Insumo"],
         "summary": "Busca insumo por ID",
@@ -1517,7 +1619,10 @@
         "security": [
           {
           "bearerAuth": []
-          }
+          },
+          {
+            "basicAuth": []
+            }
         ],
         "tags": ["Insumo"],
         "summary": "Altera insumo",
@@ -1559,7 +1664,10 @@
         "security": [
           {
           "bearerAuth": []
-          }
+          },
+          {
+            "basicAuth": []
+            }
         ],
         "tags": ["Insumo"],
         "summary": "Deletainsumo",
@@ -1590,7 +1698,10 @@
         "security": [
           {
           "bearerAuth": []
-          }
+          },
+          {
+            "basicAuth": []
+            }
         ],
         "tags": ["Procedimento"],
         "summary": "Adicionar novo procedimento",
@@ -1629,7 +1740,10 @@
         "security": [
           {
           "bearerAuth": []
-          }
+          },
+          {
+            "basicAuth": []
+            }
         ],
         "tags": ["Procedimento"],
         "summary": "Busca procedimentos",
@@ -1681,7 +1795,10 @@
         "security": [
           {
           "bearerAuth": []
-          }
+          },
+          {
+            "basicAuth": []
+            }
         ],
         "tags": ["Procedimento"],
         "summary": "Busca procedimento por ID",
@@ -1713,7 +1830,10 @@
         "security": [
           {
           "bearerAuth": []
-          }
+          },
+          {
+            "basicAuth": []
+            }
         ],
         "tags": ["Procedimento"],
         "summary": "ALtera procedimento",
@@ -1755,7 +1875,10 @@
         "security": [
           {
           "bearerAuth": []
-          }
+          },
+          {
+            "basicAuth": []
+            }
         ],
         "tags": ["Procedimento"],
         "summary": "Deleta procedimento",
@@ -1786,7 +1909,10 @@
         "security": [
           {
           "bearerAuth": []
-          }
+          },
+          {
+            "basicAuth": []
+            }
         ],
         "tags": ["InsumoProcedimento"],
         "summary": "Adicionar novo insumo-Procedimento",
@@ -1825,7 +1951,10 @@
         "security": [
           {
           "bearerAuth": []
-          }
+          },
+          {
+            "basicAuth": []
+            }
         ],
         "tags": ["InsumoProcedimento"],
         "summary": "Busca insumo-Procedimentos",
@@ -1867,7 +1996,10 @@
         "security": [
           {
           "bearerAuth": []
-          }
+          },
+          {
+            "basicAuth": []
+            }
         ],
         "tags": ["InsumoProcedimento"],
         "summary": "Busca insumo-Procedimento por ID",
@@ -1899,7 +2031,10 @@
         "security": [
           {
           "bearerAuth": []
-          }
+          },
+          {
+            "basicAuth": []
+            }
         ],
         "tags": ["InsumoProcedimento"],
         "summary": "Deleta insumo-Procedimento",
@@ -1930,7 +2065,10 @@
         "security": [
           {
           "bearerAuth": []
-          }
+          },
+          {
+            "basicAuth": []
+            }
         ],
         "tags": ["ProcedimentoAgendamento"],
         "summary": "Adicionar novo procedimento-Agendamento",
@@ -1969,7 +2107,10 @@
         "security": [
           {
           "bearerAuth": []
-          }
+          },
+          {
+            "basicAuth": []
+            }
         ],
         "tags": ["ProcedimentoAgendamento"],
         "summary": "Busca procedimento-Agendamentos",
@@ -2011,7 +2152,10 @@
         "security": [
           {
           "bearerAuth": []
-          }
+          },
+          {
+            "basicAuth": []
+            }
         ],
         "tags": ["ProcedimentoAgendamento"],
         "summary": "Busca procedimento-Agendamento por ID",
@@ -2043,7 +2187,10 @@
         "security": [
           {
           "bearerAuth": []
-          }
+          },
+          {
+            "basicAuth": []
+            }
         ],
         "tags": ["ProcedimentoAgendamento"],
         "summary": "Deleta procedimento-Agendamento",

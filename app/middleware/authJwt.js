@@ -9,43 +9,47 @@ verifyToken = (req, res, next) => {
 
   let token = req.headers["authorization"];
 
+  console.log(token)
+
   if (!token) {
     return res.status(403).send({
       message: "Nenhum token encontrado!"
     });
   }
 
-  jwt.verify(token.replace('Bearer ',''), process.env.SECRET, (err, decoded) => {
-    if (err) {
-      return res.status(401).send({
-        message: "Não autorizado!"
+  if (token.split(" ")[0] === "Bearer"){
+
+    console.log("dsdasdasadsadad")
+      jwt.verify(token.replace('Bearer ',''), process.env.SECRET, (err, decoded) => {
+        if (err) {
+          console.log(err)
+          return res.status(401).send({
+            message: "Não autorizado!"
+          });
+        }
+        req.id_usuario = decoded.id;
+    
+        next();
       });
-    }
-    req.id_usuario = decoded.id;
 
-    next();
-  });
-};
+    } else if  (token.split(" ")[0] === "Basic"){
+      const base = Buffer.from((token.split(" ")[1]), 'base64').toString('ascii')
+      console.log("56161611")
+    
+        if (base !== `${process.env.API_USER}:${process.env.API_PASS}`) {
+          return res.status(401).send({
+            message: "Não autorizado!"
+          });
+        }
+      next();
+      } else {
+        return res.status(403).send({
+          message: "Token com formato incorreto!"
+        });
+      }
 
-verifyLocal = (req, res, next) => {
-
-  let token = (req.headers["authorization"]);
-
-  if (!token) {
-    return res.status(403).send({
-      message: "Nenhum token encontrado!"
-    });
   }
-  
-  const base = Buffer.from((token.split(" ")[1]), 'base64').toString('ascii')
-  
-  if (base !== `${process.env.API_USER}:${process.env.API_PASS}`) {
-    return res.status(401).send({
-      message: "Não autorizado!"
-    });
-  }
-  next();
-};
+
 
 isAdmin = async (req, res, next) => {
     const adm = Administrador.findOne({ where: {id_usuario: req.id_usuario} });
@@ -107,7 +111,6 @@ isBarber = async (req, res, next) => {
 const authJwt = {
   verifyToken: verifyToken,
   isAdmin: isAdmin,
-  isBarber: isBarber,
-  verifyLocal: verifyLocal
+  isBarber: isBarber
 };
 module.exports = authJwt;

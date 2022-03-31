@@ -5,9 +5,9 @@ module.exports = app => {
 
   var router = require("express").Router();
 
-  router.get("/recuperasenha", [authJwt.verifyLocal], recuperaSenha.findOne);
+  router.get("/recuperasenha", [authJwt.verifyToken], recuperaSenha.findOne);
 
-  router.put("/recuperasenha/:id_usuario", [authJwt.verifyLocal], recuperaSenha.update);
+  router.put("/recuperasenha/:id_usuario", [authJwt.verifyToken], recuperaSenha.update);
 
   app.use('/RhBarbearia/', router);
 };
