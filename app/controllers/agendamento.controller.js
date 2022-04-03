@@ -5,6 +5,8 @@ const Agenda = db.Agenda;
 const Cliente = db.Cliente;
 const Barbeiro = db.Barbeiro;
 const Usuario = db.Usuario;
+const Procedimento = db.Procedimento;
+const ProcedimentoAgendamento = db.ProcedimentoAgendamento;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new Tutorial
@@ -74,6 +76,11 @@ exports.findAll = (req, res) => {
     model: Cliente,
     include: [{
       model: Usuario,
+      }],
+    },{
+      model: ProcedimentoAgendamento,
+      include: [{
+        model: Procedimento,
       }],
     }],
     })
