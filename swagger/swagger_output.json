@@ -7,7 +7,7 @@
     },
   "servers": [
     {
-      "url": "http:/RhBarbearia",
+      "url": "https:/RhBarbearia",
       "description": "Basic"
     }
    ],
