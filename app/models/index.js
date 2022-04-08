@@ -4,21 +4,10 @@ const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
 const basename = path.basename(__filename);
-// const env = process.env.NODE_ENV || 'development';
-// const config = require(__dirname + '/../config/db.config.json');
 const db = {};
 
 let sequelize;
   
-// sequelize = new Sequelize(Buffer.from(config.database, 'base64').toString('ascii'), Buffer.from(config.username, 'base64').toString('ascii'),
-//   Buffer.from(config.password, 'base64').toString('ascii'), {
-//   host: Buffer.from(config.host, 'base64').toString('ascii'),
-//   dialect: config.dialect,
-//   define: {
-//     freezeTableName: true
-//   }
-// });
-
 sequelize = new Sequelize(Buffer.from(process.env.BD_DATABASE, 'base64').toString('ascii'), Buffer.from(process.env.BD_USERNAME, 'base64').toString('ascii'),
   Buffer.from(process.env.BD_PASSWORD, 'base64').toString('ascii'), {
   host: Buffer.from(process.env.BD_HOST, 'base64').toString('ascii'),

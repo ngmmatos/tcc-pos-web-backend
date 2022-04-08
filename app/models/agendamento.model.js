@@ -57,6 +57,9 @@ module.exports = (sequelize, Sequelize) => {
     });
     Agendamento.hasMany(models.ProcedimentoAgendamento, 
       { foreignKey: 'id_agendamento' });
+    Agendamento.hasOne(models.Atendimento, {
+        foreignKey: 'id_agendamento'
+      })
   };
   return Agendamento;
 };

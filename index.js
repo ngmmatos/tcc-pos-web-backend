@@ -29,6 +29,12 @@ require("./app/routes/insumoProcedimento.routes")(app);
 require("./app/routes/procedimentoAgendamento.routes")(app);
 require("./app/routes/login.routes")(app);
 require("./app/routes/recuperaSenha.routes")(app);
+require("./app/routes/atendimento.routes")(app);
+require("./app/routes/conta.routes")(app);
+require("./app/routes/pagamento.routes")(app);
+require("./app/routes/recebimento.routes")(app);
+require("./app/routes/statusAtendimento.routes")(app);
+require("./app/routes/statusRecebimento.routes")(app);
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {

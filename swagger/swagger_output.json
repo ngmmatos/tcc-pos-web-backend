@@ -7,7 +7,7 @@
     },
   "servers": [
     {
-      "url": "https:/RhBarbearia",
+      "url": "http:/RhBarbearia",
       "description": "Basic"
     }
    ],
@@ -618,7 +618,7 @@
             }
         ],
         "tags": ["Administrador"],
-        "summary": "Adicionar novo administrador","summary": "Adicionar novo administrador",
+        "summary": "Adicionar novo administrador",
         "description": "",
         "operationId": "addAdministrador",
         "requestBody": 
@@ -745,310 +745,6 @@
         "parameters": [
           {
             "name": "id_adm",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/cliente": {
-      "post": {
-        "tags": ["Cliente"],
-        "summary": "Adicionar novo cliente",
-        "description": "",
-        "operationId": "addCliente",
-        "requestBody": 
-        {
-          "required": true,
-          "content": {
-            "application/json":{
-              "schema":{
-                  "$ref": "#/components/schemas/Cliente"
-                      }
-                    }
-                  }
-                },
-        "responses": {
-          "200": {
-            "description": "Success"
-          },
-          "201": {
-            "description": "Created"
-          },
-          "500": {
-            "description": "Internal Server Error"
-            },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-            }
-          }
-        },
-      "get": {
-        "security": [
-          {
-          "bearerAuth": []
-          },
-          {
-            "basicAuth": []
-            }
-        ],
-        "tags": ["Cliente"],
-        "summary": "Busca clientes",
-        "description": "",
-        "parameters": [
-          {
-            "name": "id_cliente",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "id_usuario",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "order",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "orderBy",
-            "in": "query",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/cliente/{id_cliente}": {
-      "get": {
-        "security": [
-          {
-          "bearerAuth": []
-          },
-          {
-            "basicAuth": []
-            }
-        ],
-        "tags": ["Cliente"],
-        "summary": "Busca cliente por ID",
-        "description": "",
-        "parameters": [
-          {
-            "name": "id_cliente",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "delete": {
-        "security": [
-          {
-          "bearerAuth": []
-          },
-          {
-            "basicAuth": []
-            }
-        ],
-        "tags": ["Cliente"],
-        "summary": "Exclui cliente",
-        "description": "",
-        "parameters": [
-          {
-            "name": "id_cliente",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/barbeiro": {
-      "post": {
-        "security": [
-          {
-          "bearerAuth": []
-          },
-          {
-            "basicAuth": []
-            }
-        ],
-        "tags": ["Barbeiro"],
-        "summary": "Adicionar novo barbeiro",
-        "description": "",
-        "operationId": "addBarbeiro",
-        "requestBody": 
-        {
-          "required": true,
-          "content": {
-            "application/json":{
-              "schema":{
-                  "$ref": "#/components/schemas/Barbeiro"
-                      }
-                    }
-                  }
-                },
-        "responses": {
-          "200": {
-            "description": "Success"
-          },
-          "201": {
-            "description": "Created"
-          },
-          "500": {
-            "description": "Internal Server Error"
-            },
-          "400": {
-            "description": "Bad Request"
-          },
-          "401": {
-            "description": "Unauthorized"
-            }
-          }
-        },
-      "get": {
-        "security": [
-          {
-          "bearerAuth": []
-          },
-          {
-            "basicAuth": []
-            }
-        ],
-        "tags": ["Barbeiro"],
-        "summary": "Busca barbeiros",
-        "description": "",
-        "parameters": [
-          {
-            "name": "id_barbeiro",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "id_usuario",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "order",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "orderBy",
-            "in": "query",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
-    "/barbeiro/{id_barbeiro}": {
-      "get": {
-        "security": [
-          {
-          "bearerAuth": []
-          },
-          {
-            "basicAuth": []
-            }
-        ],
-        "tags": ["Barbeiro"],
-        "summary": "Busca barbeiro por ID",
-        "description": "",
-        "parameters": [
-          {
-            "name": "id_barbeiro",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success"
-          },
-          "401": {
-            "description": "Unauthorized"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "delete": {
-        "security": [
-          {
-          "bearerAuth": []
-          },
-          {
-            "basicAuth": []
-            }
-        ],
-        "tags": ["Barbeiro"],
-        "summary": "Exclui barbeiro",
-        "description": "",
-        "parameters": [
-          {
-            "name": "id_barbeiro",
             "in": "path",
             "required": true,
             "type": "string"
@@ -1260,6 +956,742 @@
         "parameters": [
           {
             "name": "id_agendamento",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/atendimento": {
+      "post": {
+        "security": [
+          {
+          "bearerAuth": []
+          },
+          {
+            "basicAuth": []
+            }
+        ],
+        "tags": ["Atendimento"],
+        "summary": "Adicionar novo atendimento",
+        "description": "",
+        "operationId": "addAtendimento",
+        "requestBody": 
+        {
+          "required": true,
+          "content": {
+            "application/json":{
+              "schema":{
+                  "$ref": "#/components/schemas/Atendimento"
+                      }
+                    }
+                  }
+                },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+            },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+            }
+          }
+        },
+      "get": {
+        "security": [
+          {
+          "bearerAuth": []
+          },
+          {
+            "basicAuth": []
+            }
+        ],
+        "tags": ["Atendimento"],
+        "summary": "Busca atendimentos",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id_atendimento",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "id_agendamento",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "id_status_atendimento",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "valor",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "data_inicio",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "data_fim",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "orderBy",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/atendimento/{id_atendimento}": {
+      "get": {
+        "security": [
+          {
+          "bearerAuth": []
+          },
+          {
+            "basicAuth": []
+            }
+        ],
+        "tags": ["Atendimento"],
+        "summary": "Busca atendimento por ID",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id_atendimento",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "security": [
+          {
+          "bearerAuth": []
+          },
+          {
+            "basicAuth": []
+            }
+        ],
+        "tags": ["Atendimento"],
+        "summary": "Altera atendimento",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id_atendimento",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }],
+        "requestBody": 
+          {
+            "required": true,
+            "content": {
+              "application/json":{
+                "schema":{
+                    "$ref": "#/components/schemas/Atendimento"
+                        }
+                      }
+                    }
+                  },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "security": [
+          {
+          "bearerAuth": []
+          },
+          {
+            "basicAuth": []
+            }
+        ],
+        "tags": ["Atendimento"],
+        "summary": "Deleta atendimento",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id_atendimento",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/barbeiro": {
+      "post": {
+        "security": [
+          {
+          "bearerAuth": []
+          },
+          {
+            "basicAuth": []
+            }
+        ],
+        "tags": ["Barbeiro"],
+        "summary": "Adicionar novo barbeiro",
+        "description": "",
+        "operationId": "addBarbeiro",
+        "requestBody": 
+        {
+          "required": true,
+          "content": {
+            "application/json":{
+              "schema":{
+                  "$ref": "#/components/schemas/Barbeiro"
+                      }
+                    }
+                  }
+                },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+            },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+            }
+          }
+        },
+      "get": {
+        "security": [
+          {
+          "bearerAuth": []
+          },
+          {
+            "basicAuth": []
+            }
+        ],
+        "tags": ["Barbeiro"],
+        "summary": "Busca barbeiros",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id_barbeiro",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "id_usuario",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "orderBy",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/barbeiro/{id_barbeiro}": {
+      "get": {
+        "security": [
+          {
+          "bearerAuth": []
+          },
+          {
+            "basicAuth": []
+            }
+        ],
+        "tags": ["Barbeiro"],
+        "summary": "Busca barbeiro por ID",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id_barbeiro",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "security": [
+          {
+          "bearerAuth": []
+          },
+          {
+            "basicAuth": []
+            }
+        ],
+        "tags": ["Barbeiro"],
+        "summary": "Exclui barbeiro",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id_barbeiro",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/cliente": {
+      "post": {
+        "tags": ["Cliente"],
+        "summary": "Adicionar novo cliente",
+        "description": "",
+        "operationId": "addCliente",
+        "requestBody": 
+        {
+          "required": true,
+          "content": {
+            "application/json":{
+              "schema":{
+                  "$ref": "#/components/schemas/Cliente"
+                      }
+                    }
+                  }
+                },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+            },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+            }
+          }
+        },
+      "get": {
+        "security": [
+          {
+          "bearerAuth": []
+          },
+          {
+            "basicAuth": []
+            }
+        ],
+        "tags": ["Cliente"],
+        "summary": "Busca clientes",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id_cliente",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "id_usuario",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "orderBy",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/cliente/{id_cliente}": {
+      "get": {
+        "security": [
+          {
+          "bearerAuth": []
+          },
+          {
+            "basicAuth": []
+            }
+        ],
+        "tags": ["Cliente"],
+        "summary": "Busca cliente por ID",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id_cliente",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "security": [
+          {
+          "bearerAuth": []
+          },
+          {
+            "basicAuth": []
+            }
+        ],
+        "tags": ["Cliente"],
+        "summary": "Exclui cliente",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id_cliente",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/conta": {
+      "post": {
+        "security": [
+          {
+          "bearerAuth": []
+          },
+          {
+            "basicAuth": []
+            }
+        ],
+        "tags": ["Conta"],
+        "summary": "Adicionar novo conta",
+        "description": "",
+        "operationId": "addConta",
+        "requestBody": 
+        {
+          "required": true,
+          "content": {
+            "application/json":{
+              "schema":{
+                  "$ref": "#/components/schemas/Conta"
+                      }
+                    }
+                  }
+                },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+            },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+            }
+          }
+        },
+      "get": {
+        "security": [
+          {
+          "bearerAuth": []
+          },
+          {
+            "basicAuth": []
+            }
+        ],
+        "tags": ["Conta"],
+        "summary": "Busca contas",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id_conta",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "valor",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "dt_pagamento",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "descricao",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "orderBy",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/conta/{id_conta}": {
+      "get": {
+        "security": [
+          {
+          "bearerAuth": []
+          },
+          {
+            "basicAuth": []
+            }
+        ],
+        "tags": ["Conta"],
+        "summary": "Busca conta por ID",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id_conta",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "security": [
+          {
+          "bearerAuth": []
+          },
+          {
+            "basicAuth": []
+            }
+        ],
+        "tags": ["Conta"],
+        "summary": "Altera conta",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id_conta",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }],
+        "requestBody": 
+          {
+            "required": true,
+            "content": {
+              "application/json":{
+                "schema":{
+                    "$ref": "#/components/schemas/Conta"
+                        }
+                      }
+                    }
+                  },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "security": [
+          {
+          "bearerAuth": []
+          },
+          {
+            "basicAuth": []
+            }
+        ],
+        "tags": ["Conta"],
+        "summary": "Deleta conta",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id_conta",
             "in": "path",
             "required": true,
             "type": "string"
@@ -2060,6 +2492,232 @@
         }
       }
     },
+    "/pagamento": {
+      "post": {
+        "security": [
+          {
+          "bearerAuth": []
+          },
+          {
+            "basicAuth": []
+            }
+        ],
+        "tags": ["Pagamento"],
+        "summary": "Adicionar novo pagamento",
+        "description": "",
+        "operationId": "addPagamento",
+        "requestBody": 
+        {
+          "required": true,
+          "content": {
+            "application/json":{
+              "schema":{
+                  "$ref": "#/components/schemas/Pagamento"
+                      }
+                    }
+                  }
+                },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+            },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+            }
+          }
+        },
+      "get": {
+        "security": [
+          {
+          "bearerAuth": []
+          },
+          {
+            "basicAuth": []
+            }
+        ],
+        "tags": ["Pagamento"],
+        "summary": "Busca pagamentos",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id_pagamento",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "id_conta",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "id_adm",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "valor",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "data_pagamento",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "esporadico",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "observacao",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "orderBy",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/pagamento/{id_pagamento}": {
+      "get": {
+        "security": [
+          {
+          "bearerAuth": []
+          },
+          {
+            "basicAuth": []
+            }
+        ],
+        "tags": ["Pagamento"],
+        "summary": "Busca pagamento por ID",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id_pagamento",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "security": [
+          {
+          "bearerAuth": []
+          },
+          {
+            "basicAuth": []
+            }
+        ],
+        "tags": ["Pagamento"],
+        "summary": "Altera pagamento",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id_pagamento",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }],
+        "requestBody": 
+          {
+            "required": true,
+            "content": {
+              "application/json":{
+                "schema":{
+                    "$ref": "#/components/schemas/Pagamento"
+                        }
+                      }
+                    }
+                  },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "security": [
+          {
+          "bearerAuth": []
+          },
+          {
+            "basicAuth": []
+            }
+        ],
+        "tags": ["Pagamento"],
+        "summary": "Deleta pagamento",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id_pagamento",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
     "/procedimentoAgendamento": {
       "post": {
         "security": [
@@ -2215,6 +2873,634 @@
           }
         }
       }
+    },
+    "/recebimento": {
+      "post": {
+        "security": [
+          {
+          "bearerAuth": []
+          },
+          {
+            "basicAuth": []
+            }
+        ],
+        "tags": ["Recebimento"],
+        "summary": "Adicionar novo recebimento",
+        "description": "",
+        "operationId": "addRecebimento",
+        "requestBody": 
+        {
+          "required": true,
+          "content": {
+            "application/json":{
+              "schema":{
+                  "$ref": "#/components/schemas/Recebimento"
+                      }
+                    }
+                  }
+                },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+            },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+            }
+          }
+        },
+      "get": {
+        "security": [
+          {
+          "bearerAuth": []
+          },
+          {
+            "basicAuth": []
+            }
+        ],
+        "tags": ["Recebimento"],
+        "summary": "Busca recebimentos",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id_recebimento",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "id_status_recebimento",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "id_atendimento",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "informacao",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "data_recebimento",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "orderBy",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/recebimento/{id_recebimento}": {
+      "get": {
+        "security": [
+          {
+          "bearerAuth": []
+          },
+          {
+            "basicAuth": []
+            }
+        ],
+        "tags": ["Recebimento"],
+        "summary": "Busca recebimento por ID",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id_recebimento",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "security": [
+          {
+          "bearerAuth": []
+          },
+          {
+            "basicAuth": []
+            }
+        ],
+        "tags": ["Recebimento"],
+        "summary": "Altera recebimento",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id_recebimento",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }],
+        "requestBody": 
+          {
+            "required": true,
+            "content": {
+              "application/json":{
+                "schema":{
+                    "$ref": "#/components/schemas/Recebimento"
+                        }
+                      }
+                    }
+                  },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "security": [
+          {
+          "bearerAuth": []
+          },
+          {
+            "basicAuth": []
+            }
+        ],
+        "tags": ["Recebimento"],
+        "summary": "Deleta recebimento",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id_recebimento",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/statusAtendimento": {
+      "post": {
+        "security": [
+          {
+          "bearerAuth": []
+          },
+          {
+            "basicAuth": []
+            }
+        ],
+        "tags": ["StatusAtendimento"],
+        "summary": "Adicionar novo statusAtendimento",
+        "description": "",
+        "operationId": "addStatusAtendimento",
+        "requestBody": 
+        {
+          "required": true,
+          "content": {
+            "application/json":{
+              "schema":{
+                  "$ref": "#/components/schemas/StatusAtendimento"
+                      }
+                    }
+                  }
+                },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+            },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+            }
+          }
+        },
+      "get": {
+        "security": [
+          {
+          "bearerAuth": []
+          },
+          {
+            "basicAuth": []
+            }
+        ],
+        "tags": ["StatusAtendimento"],
+        "summary": "Busca statusAtendimentos",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id_status_atendimento",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "status_atendimento",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "msg",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "orderBy",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/statusAtendimento/{id_status_atendimento}": {
+      "get": {
+        "security": [
+          {
+          "bearerAuth": []
+          },
+          {
+            "basicAuth": []
+            }
+        ],
+        "tags": ["StatusAtendimento"],
+        "summary": "Busca statusAtendimento por ID",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id_status_atendimento",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "security": [
+          {
+          "bearerAuth": []
+          },
+          {
+            "basicAuth": []
+            }
+        ],
+        "tags": ["StatusAtendimento"],
+        "summary": "Altera statusAtendimento",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id_status_atendimento",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }],
+        "requestBody": 
+          {
+            "required": true,
+            "content": {
+              "application/json":{
+                "schema":{
+                    "$ref": "#/components/schemas/StatusAtendimento"
+                        }
+                      }
+                    }
+                  },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "security": [
+          {
+          "bearerAuth": []
+          },
+          {
+            "basicAuth": []
+            }
+        ],
+        "tags": ["StatusAtendimento"],
+        "summary": "Deleta statusAtendimento",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id_status_atendimento",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/statusRecebimento": {
+      "post": {
+        "security": [
+          {
+          "bearerAuth": []
+          },
+          {
+            "basicAuth": []
+            }
+        ],
+        "tags": ["StatusRecebimento"],
+        "summary": "Adicionar novo statusRecebimento",
+        "description": "",
+        "operationId": "addStatusRecebimento",
+        "requestBody": 
+        {
+          "required": true,
+          "content": {
+            "application/json":{
+              "schema":{
+                  "$ref": "#/components/schemas/StatusRecebimento"
+                      }
+                    }
+                  }
+                },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+            },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+            }
+          }
+        },
+      "get": {
+        "security": [
+          {
+          "bearerAuth": []
+          },
+          {
+            "basicAuth": []
+            }
+        ],
+        "tags": ["StatusRecebimento"],
+        "summary": "Busca statusRecebimentos",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id_status_atendimento",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "status_recebimento",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "msg",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "orderBy",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/statusRecebimento/{id_statusRecebimento}": {
+      "get": {
+        "security": [
+          {
+          "bearerAuth": []
+          },
+          {
+            "basicAuth": []
+            }
+        ],
+        "tags": ["StatusRecebimento"],
+        "summary": "Busca statusRecebimento por ID",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id_statusRecebimento",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "security": [
+          {
+          "bearerAuth": []
+          },
+          {
+            "basicAuth": []
+            }
+        ],
+        "tags": ["StatusRecebimento"],
+        "summary": "Altera statusRecebimento",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id_statusRecebimento",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }],
+        "requestBody": 
+          {
+            "required": true,
+            "content": {
+              "application/json":{
+                "schema":{
+                    "$ref": "#/components/schemas/StatusRecebimento"
+                        }
+                      }
+                    }
+                  },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "security": [
+          {
+          "bearerAuth": []
+          },
+          {
+            "basicAuth": []
+            }
+        ],
+        "tags": ["StatusRecebimento"],
+        "summary": "Deleta statusRecebimento",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id_statusRecebimento",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -2318,6 +3604,22 @@
                   }
                 }  
               },
+        "Conta": {
+          "type": "object",
+          "properties": {
+            "valor": {
+              "type": "number",
+              "format": "float"
+            },
+            "dt_pagamento": {
+              "type": "integer",
+              "format": "int64"
+                    },
+            "descricao": {
+              "type": "string"
+                    }
+                  }
+              },
         "Barbeiro": {
           "type": "object",
           "properties": {
@@ -2348,6 +3650,31 @@
                   }
                 }  
               },
+          "Atendimento": {
+            "type": "object",
+            "properties": {
+              "valor": {
+                "type": "number",
+                "format": "float"
+              },
+              "id_agendamento": {
+                "type": "integer",
+                "format": "int64"
+                      },
+              "id_status_atendimento": {
+                "type": "integer",
+                "format": "int64"
+                      },
+              "data_inicio": {
+                "type": "integer",
+                "format": "int64"
+                      },
+              "data_fim": {
+                "type": "integer",
+                "format": "int64"
+                      }
+                    }
+                },
           "Insumo": {
             "type": "object",
             "properties": {
@@ -2417,7 +3744,7 @@
         "ProcedimentoAgendamento": {
           "type": "object",
           "properties": {
-              "id_insumo": {
+              "id_agendamento": {
                 "type": "integer",
                 "format": "int64"
                     },
@@ -2426,7 +3753,76 @@
                 "format": "int64"
                     }  
                   }
-                }
+                },
+          "Pagamento": {
+            "type": "object",
+            "properties": {
+              "id_conta": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "id_adm": {
+                "type": "integer",
+                "format": "int64"
+              },
+              "valor": {
+                "type": "number",
+                "format": "float"
+              },
+              "data_pagamento": {
+                "type": "integer",
+                "format": "int64"
+                      },
+              "observacao": {
+                "type": "string"
+            },
+              "esporadico": {
+                "type": "boolean"
+                      }
+                    }
+                },
+        "Recebimento": {
+          "type": "object",
+          "properties": {
+            "id_status_recebimento": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "id_atendimento": {
+              "type": "integer",
+              "format": "int64"
+            },
+            "data_recebimento": {
+              "type": "integer",
+              "format": "int64"
+                    },
+            "informacao": {
+              "type": "string"
+                    }
+                  }
+                },
+        "StatusAtendimento": {
+          "type": "object",
+          "properties": {
+            "status_atendimento": {
+              "type": "string"
+            },
+            "msg": {
+              "type": "string"
+                    }
+                  }
+                },
+        "StatusRecebimento": {
+          "type": "object",
+          "properties": {
+            "status_recebimento": {
+              "type": "string"
+            },
+            "msg": {
+              "type": "string"
+                    }
+                  }
+                }         
               }
             },
   "definitions": {}

@@ -25,6 +25,9 @@ module.exports = (sequelize, Sequelize) => {
     Administrador.belongsTo(models.Usuario, {
       foreignKey: 'id_usuario'
     });
+    Administrador.hasOne(models.Pagamento, {
+      foreignKey: 'id_adm'
+    });
     };
   return Administrador;
 };
