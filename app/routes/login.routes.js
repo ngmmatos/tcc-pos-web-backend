@@ -4,6 +4,8 @@ module.exports = app => {
     var router = require("express").Router();
   
     router.post("/login", login.signin);
+   
+    router.post("/loginOauth", login.signinOauth);
   
     app.use('/RhBarbearia/', router);
   };

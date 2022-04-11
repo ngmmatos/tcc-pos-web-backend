@@ -48,6 +48,42 @@
             }
           }
         },
+      "/loginOauth": {
+        "post": {
+          "tags": ["Login Oauth"],
+          "summary": "Fazer login no sistema com Oauth",
+          "description": "",
+          "operationId": "addLoginOauth",
+          "requestBody": 
+          {
+            "required": true,
+            "content": {
+              "application/json":{
+                "schema":{
+                    "$ref": "#/components/schemas/LoginOauth"
+                        }
+                      }
+                    }
+                  },
+          "responses": {
+            "200": {
+              "description": "Success"
+            },
+            "201": {
+              "description": "Created"
+            },
+            "500": {
+              "description": "Internal Server Error"
+              },
+            "400": {
+              "description": "Bad Request"
+            },
+            "401": {
+              "description": "Unauthorized"
+              }
+            }
+          }
+        },
       "/recuperaSenha": {
         "get": {
           "security":[
@@ -3527,6 +3563,14 @@
             "type": "string"
                   }
               }
+          },
+      "LoginOauth": {
+        "type": "object",
+        "properties": {
+          "token": {
+            "type": "string"
+              }
+            }
           },
       "RecuperaSenha": {
         "type": "object",
