@@ -46,6 +46,7 @@ exports.findAll = (req, res) => {
   const id_cliente = req.query.id_cliente;
   const data_realizacao = req.query.data_realizacao;
   const data_agendamento = req.query.data_agendamento;
+  const id_barbeiro = req.query.id_barbeiro;
   var order = req.query.order;
   var orderBy= req.query.orderBy
 
@@ -58,9 +59,10 @@ exports.findAll = (req, res) => {
   var conditionIdCliente = id_cliente ? { id_cliente: { [Op.eq]: `${id_cliente}` } } : null;
   var conditionDataRealizacao = data_realizacao ? { data_realizacao: { [Op.eq]: `${data_realizacao}` } } : null;
   var conditionDataAgendamento = data_agendamento ? { data_agendamento: { [Op.eq]: `${data_agendamento}` } } : null;
+  var conditionBarbeiro = id_barbeiro ? { '$Agenda.id_barbeiro$': { [Op.eq]: `${id_barbeiro}` } } : null;
 
   Agendamento.findAll({ where: {
-    [Op.and]: [conditionIdAgenda, conditionIdCliente, conditionDataRealizacao, conditionDataAgendamento]
+    [Op.and]: [conditionIdAgenda, conditionIdCliente, conditionDataRealizacao, conditionDataAgendamento, conditionBarbeiro]
   },
   order: [[`${orderBy}`, `${order}`]],
   limit: req.query.rows,

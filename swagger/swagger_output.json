@@ -876,6 +876,11 @@
             "type": "string"
           },
           {
+            "name": "id_barbeiro",
+            "in": "query",
+            "type": "string"
+          },
+          {
             "name": "order",
             "in": "query",
             "type": "string"
