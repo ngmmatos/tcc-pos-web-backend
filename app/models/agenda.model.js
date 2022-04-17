@@ -12,7 +12,7 @@ module.exports = (sequelize, Sequelize) => {
       unique: true,
       validate: {
         notEmpty: {
-          msg: "Campo nome não pode ser vazio"
+          msg: "Campo id barbeiro não pode ser vazio"
           }
         }
       },

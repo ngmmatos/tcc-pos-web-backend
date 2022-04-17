@@ -3588,6 +3588,10 @@
         "Agenda": {
           "type": "object",
           "properties": {
+            "id_barbeiro": {
+              "type": "integer",
+              "format": "int64"
+            },
             "data": {
               "type": "integer",
               "format": "int64"
