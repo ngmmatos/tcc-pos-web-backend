@@ -169,6 +169,41 @@
                 }
               }
             },
+            "/agenda/create": {
+              "post": {
+                "security": [
+                  {
+                  "bearerAuth": []
+                  },
+                  {
+                    "basicAuth": []
+                    }
+                ],
+                "tags": ["Agenda"],
+                "summary": "Adicionar nova entrada de agenda",
+                "description": "",
+                "operationId": "addAgenda",
+                "requestBody": 
+                {
+                  "required": true,
+                  "content": {
+                    "application/json":{
+                      "schema":{
+                          "$ref": "#/components/schemas/AgendaCreate"
+                              }
+                            }
+                          }
+                        },
+                        "responses": {
+                          "200": {
+                            "description": "Success"
+                          },
+                          "500": {
+                            "description": "Internal Server Error"
+                          }
+                      }
+                    }
+                  },
       "/agenda": {
         "post": {
           "security": [
@@ -3616,6 +3651,29 @@
                     }
                   }
               },
+              "AgendaCreate": {
+                "type": "object",
+                "properties": {
+                  "id_barbeiro": {
+                    "type": "integer",
+                    "format": "int64"
+                  },
+                  "dias": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    }
+                  },
+                  "mes": {
+                    "type": "integer",
+                    "format": "int64"
+                  },
+                  "ano": {
+                    "type": "integer",
+                    "format": "int64"
+                          }
+                        }
+                    },
           "Usuario": {
             "type": "object",
             "properties": {

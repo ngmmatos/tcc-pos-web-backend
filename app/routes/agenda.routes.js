@@ -7,6 +7,8 @@ module.exports = app => {
 
   router.post("/agenda", [authJwt.verifyToken], [authJwt.isBarber], agenda.create);
 
+  router.post("/agenda/create", [authJwt.verifyToken], [authJwt.isBarber], agenda.createAll);
+
   router.get("/agenda", [authJwt.verifyToken], agenda.findAll);
 
   router.get("/agenda/:id_agenda", [authJwt.verifyToken], agenda.findOne);

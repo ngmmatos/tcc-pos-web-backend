@@ -19,7 +19,6 @@ verifyToken = (req, res, next) => {
 
   if (token.split(" ")[0] === "Bearer"){
 
-    console.log("dsdasdasadsadad")
       jwt.verify(token.replace('Bearer ',''), process.env.SECRET, (err, decoded) => {
         if (err) {
           console.log(err)

@@ -1,3 +1,5 @@
+const { promises } = require("fs");
+const { send } = require("process");
 const db = require("../models");
 const Agenda = db.Agenda;
 const Barbeiro = db.Barbeiro;
@@ -25,6 +27,71 @@ exports.create = (req, res) => {
       });
     });
 };
+
+
+exports.createAll = (req, res) => {
+
+  let listAgendaCreate = []
+  
+  const horarios = [
+    {"inicio": "08:00", "final": "09:00", "periodo": "manha"},
+    {"inicio": "09:00", "final": "10:00", "periodo": "manha"},
+    {"inicio": "10:00", "final": "11:00", "periodo": "manha"},
+    {"inicio": "11:00", "final": "12:00", "periodo": "manha"},
+    {"inicio": "13:00", "final": "14:00", "periodo": "tarde"},
+    {"inicio": "14:00", "final": "15:00", "periodo": "tarde"},
+    {"inicio": "15:00", "final": "16:00", "periodo": "tarde"},
+    {"inicio": "16:00", "final": "17:00", "periodo": "tarde"},
+    {"inicio": "17:00", "final": "18:00", "periodo": "tarde"},
+    {"inicio": "18:00", "final": "19:00", "periodo": "noite"},
+  ]
+  
+  try {
+
+    const varDias = req.body.dias
+
+      varDias.map((dia) => {
+          
+          horarios.map((agenda) => {
+      
+            const inicio = `${req.body.ano}-${req.body.mes}-${dia} ${agenda.inicio}`
+            const fim = `${req.body.ano}-${req.body.mes}-${dia} ${agenda.final}`
+            const id_barbeiro = req.body.id_barbeiro;
+      
+            const agendaCreate = {
+              id_barbeiro: id_barbeiro,
+              data: dia,
+              periodo: agenda.periodo,
+              hr_inicio: ((Date.parse(inicio)/1000) - 10800),
+              hr_fim: ((Date.parse(fim)/1000) - 10800),
+              agendado: false,
+              minutos_disponiveis: 60,
+            };
+            listAgendaCreate.push(agendaCreate)
+          });
+        });
+
+        async function criaAGenda(agendas) { 
+          
+          let saidaAgenda = []
+          
+          agendas.map(agenda => {
+            saidaAgenda.push(Agenda.create(agenda))
+          });
+          const resultado = await Promise.all(saidaAgenda)
+          return resultado
+        };
+
+        criaAGenda(listAgendaCreate).then(resposta =>{
+          res.send(resposta)
+        });
+
+      } catch {
+        res.status(500).send({
+          message: "Algum erro ocorreu na validação do usuário"
+          });
+        };
+      };
 
 exports.findAll = (req, res) => {
   const id_barbeiro = req.query.id_barbeiro;
