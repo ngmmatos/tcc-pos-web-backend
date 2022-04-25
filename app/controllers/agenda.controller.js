@@ -71,21 +71,64 @@ exports.createAll = (req, res) => {
           });
         });
 
-        async function criaAGenda(agendas) { 
+        async function analisaAgenda(agendas) { 
           
-          let saidaAgenda = []
+          let saidaAnalisaAgenda = []
           
           agendas.map(agenda => {
-            saidaAgenda.push(Agenda.create(agenda))
-          });
-          const resultado = await Promise.all(saidaAgenda)
-          return resultado
-        };
 
-        criaAGenda(listAgendaCreate).then(resposta =>{
-          res.send(resposta)
+            var conditionIdBarbeiro = agenda.id_barbeiro ? { id_barbeiro: { [Op.eq]: `${agenda.id_barbeiro}` } } : null;
+            var conditionHrInicio = agenda.hr_inicio ? { hr_inicio: { [Op.gte]: `${agenda.hr_inicio}` } } : null;
+            var conditionHrFim = agenda.hr_fim ? { hr_fim: { [Op.lte]: `${agenda.hr_fim}` } } : null;
+
+            saidaAnalisaAgenda.push(Agenda.findAll({ where: {
+              [Op.and]: [conditionIdBarbeiro, conditionHrInicio, conditionHrFim]
+            }
+          }));
         });
+        const resultado = await Promise.all(saidaAnalisaAgenda)
 
+        return resultado
+      };  
+      
+      async function criaAGenda(agendas) { 
+          
+        let saidaAgenda = []
+        
+        agendas.map(agenda => {
+          saidaAgenda.push(Agenda.create(agenda))
+        });
+        const resultado = await Promise.all(saidaAgenda)
+        return resultado
+      };
+
+      analisaAgenda(listAgendaCreate).then(resposta =>{
+
+         let listaProvisionaria = listAgendaCreate
+         let count = 0
+         const listaResposta = resposta
+         listaResposta.map((analise, index) => {
+           if (analise.length > 0) {
+             
+             listaProvisionaria.map(lista => {
+               let listaParcial = JSON.parse(JSON.stringify(analise))
+
+                if (listaParcial[0].hr_inicio >= lista.hr_inicio && listaParcial[0].hr_fim <= lista.hr_fim) {
+
+                  listAgendaCreate.splice((index - count), 1)
+                  count = count + 1
+
+                }
+                else {
+                  console.log(`Ja existe uma agenda para o barbeiro id ${listaParcial[0].id_barbeiro} entre os horarios ${listaParcial[0].hr_inicio} e ${listaParcial[0].hr_fim}`)
+                }
+              });
+            }
+          });
+          criaAGenda(listAgendaCreate).then(resposta =>{
+            res.send(resposta)
+          });
+        });
       } catch {
         res.status(500).send({
           message: "Algum erro ocorreu na validação do usuário"

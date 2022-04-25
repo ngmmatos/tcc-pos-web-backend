@@ -39,6 +39,7 @@ exports.findAll = (req, res) => {
   const valor = req.query.valor;
   const data_inicio = req.query.data_inicio;
   const data_fim = req.query.data_fim;
+  const id_barbeiro = req.query.id_barbeiro;
   var order = req.query.order;
   var orderBy= req.query.orderBy
 
@@ -53,9 +54,10 @@ exports.findAll = (req, res) => {
   var conditionValor = valor ? { valor: { [Op.eq]: `${valor}` } } : null;
   var conditionDataInicio = data_inicio ? { data_inicio: { [Op.lte]: `${data_inicio}` } } : null;
   var conditionDataFim = data_fim ? { data_fim: { [Op.gte]: `${data_fim}` } } : null;
+  var conditionBarbeiro = id_barbeiro ? { '$Agendamento.Agenda.id_barbeiro$': { [Op.eq]: `${id_barbeiro}` } } : null;
 
   Atendimento.findAll({ where: {
-    [Op.and]: [conditionAtendimento, conditionIdAgendamento, conditionStatusAtendimento, conditionValor, conditionDataInicio, conditionDataFim]
+    [Op.and]: [conditionAtendimento, conditionIdAgendamento, conditionStatusAtendimento, conditionValor, conditionDataInicio, conditionDataFim, conditionBarbeiro]
   },
   order: [[`${orderBy}`, `${order}`]],
   limit: req.query.rows,
@@ -69,16 +71,17 @@ exports.findAll = (req, res) => {
               model: Usuario,
             }],
         }],
+        },{
         model: Cliente,
         include: [{
           model: Usuario,
           }],
         },{
-          model: ProcedimentoAgendamento,
-          include: [{
-            model: Procedimento,
-          }],
-        }]
+    model: ProcedimentoAgendamento,
+    include: [{
+      model: Procedimento,
+        }],
+      }]
     },{
     model: StatusAtendimento,
     }],

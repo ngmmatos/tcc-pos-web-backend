@@ -1112,6 +1112,11 @@
             "type": "string"
           },
           {
+            "name": "id_barbeiro",
+            "in": "query",
+            "type": "string"
+          },
+          {
             "name": "id_agendamento",
             "in": "query",
             "type": "string"
