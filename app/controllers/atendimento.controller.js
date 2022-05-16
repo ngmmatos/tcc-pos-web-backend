@@ -52,9 +52,9 @@ exports.findAll = (req, res) => {
   var conditionIdAgendamento = id_agendamento ? { id_agendamento: { [Op.eq]: `${id_agendamento}` } } : null;
   var conditionStatusAtendimento = id_status_atendimento ? { id_status_atendimento: { [Op.eq]: `${id_status_atendimento}` } } : null;
   var conditionValor = valor ? { valor: { [Op.eq]: `${valor}` } } : null;
-  var conditionDataInicio = data_inicio ? { data_inicio: { [Op.lte]: `${data_inicio}` } } : null;
-  var conditionDataFim = data_fim ? { data_fim: { [Op.gte]: `${data_fim}` } } : null;
-  var conditionBarbeiro = id_barbeiro ? { '$Agendamento.Agenda.id_barbeiro$': { [Op.eq]: `${id_barbeiro}` } } : null;
+  var conditionDataInicio = data_inicio ? { data_inicio: { [Op.gte]: `${data_inicio}` } } : null;
+  var conditionDataFim = data_fim ? { data_fim: { [Op.lte]: `${data_fim}` } } : null;
+  var conditionBarbeiro = id_barbeiro ? { '$Agendamento.Agenda.id_barbeiro$': { [Op.eq]: `${id_barbeiro}` } } : null;s
 
   Atendimento.findAll({ where: {
     [Op.and]: [conditionAtendimento, conditionIdAgendamento, conditionStatusAtendimento, conditionValor, conditionDataInicio, conditionDataFim, conditionBarbeiro]
