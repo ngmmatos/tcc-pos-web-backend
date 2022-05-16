@@ -54,7 +54,7 @@ exports.findAll = (req, res) => {
   var conditionValor = valor ? { valor: { [Op.eq]: `${valor}` } } : null;
   var conditionDataInicio = data_inicio ? { data_inicio: { [Op.gte]: `${data_inicio}` } } : null;
   var conditionDataFim = data_fim ? { data_fim: { [Op.lte]: `${data_fim}` } } : null;
-  var conditionBarbeiro = id_barbeiro ? { '$Agendamento.Agenda.id_barbeiro$': { [Op.eq]: `${id_barbeiro}` } } : null;s
+  var conditionBarbeiro = id_barbeiro ? { '$Agendamento.Agenda.id_barbeiro$': { [Op.eq]: `${id_barbeiro}` } } : null;
 
   Atendimento.findAll({ where: {
     [Op.and]: [conditionAtendimento, conditionIdAgendamento, conditionStatusAtendimento, conditionValor, conditionDataInicio, conditionDataFim, conditionBarbeiro]
