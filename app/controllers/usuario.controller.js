@@ -1,5 +1,7 @@
 const db = require("../models");
 const Usuario = db.Usuario;
+const Administrador = db.Administrador;
+const Barbeiro = db.Barbeiro;
 const Op = db.Sequelize.Op;
 
 exports.create = (req, res) => {
@@ -49,7 +51,8 @@ exports.findAll = (req, res) => {
     [Op.and]: [conditionNome, conditionEmail, conditionTelefone, conditionSexo, conditionSenha]
   },
   order: [[`${orderBy}`, `${order}`]],
-  limit: req.query.rows
+  limit: req.query.rows,
+  include: [{model: Administrador},{model: Barbeiro}]
   })
     .then(data => {
       res.send(data);
