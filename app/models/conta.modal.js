@@ -25,6 +25,15 @@ module.exports = (sequelize, Sequelize) => {
             }
             }
         },
+    dt_vencimento: {
+      type: Sequelize.INTEGER,
+      allowNull: false,
+      validate: {
+          notEmpty: {
+          msg: "Campo dt_vencimento não pode ser vazio"
+          }
+          }
+      },
     descricao: {
         type: Sequelize.STRING,
         allowNull: false,

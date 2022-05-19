@@ -1652,6 +1652,11 @@
             "type": "string"
           },
           {
+            "name": "dt_vencimento",
+            "in": "query",
+            "type": "string"
+          },
+          {
             "name": "descricao",
             "in": "query",
             "type": "string"
@@ -3728,6 +3733,10 @@
               "format": "float"
             },
             "dt_pagamento": {
+              "type": "integer",
+              "format": "int64"
+                    },
+            "dt_vencimento": {
               "type": "integer",
               "format": "int64"
                     },
