@@ -7,10 +7,14 @@ module.exports = (sequelize, Sequelize) => {
       allowNull: false
     },
     telefone: {
-      type: Sequelize.INTEGER,
-      allowNull: true,
-      unique: true
-        },
+      type: Sequelize.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: "Campo telefone não pode ser vazio"
+        }
+      }
+    },
     fornecedor: {
       type: Sequelize.INTEGER,
       allowNull: false,
