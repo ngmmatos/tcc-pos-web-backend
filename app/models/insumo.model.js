@@ -11,7 +11,7 @@ module.exports = (sequelize, Sequelize) => {
     id_fornecedor: {
       type: Sequelize.INTEGER,
       allowNull: false,
-      unique: true,
+      unique: false,
       validate: {     
         notEmpty: {
           msg: "Campo id_fornecedor não pode ser vazio"
