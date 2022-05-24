@@ -27,7 +27,7 @@ exports.create = (req, res) => {
 exports.findAll = (req, res) => {
   const id_conta = req.query.id_conta;
   const valor = req.query.valor;
-  const dt_pagamento = req.query.dt_pagamento;zz
+  const dt_pagamento = req.query.dt_pagamento;
   const dt_vencimento_menor = req.query.dt_venciment_menor;
   const dt_vencimento_maior = req.query.dt_venciment_maior;
   const descricao = req.query.descricao;
