@@ -31,7 +31,8 @@ exports.create = (req, res) => {
 exports.findAll = (req, res) => {
   const id_pagamento = req.query.id_pagamento;
   const valor = req.query.valor;
-  const data_pagamento = req.query.data_pagamento;
+  const data_pagamento_maior = req.query.data_pagamento_maior;
+  const data_pagamento_menor = req.query.data_pagamento_menor;
   const id_conta = req.query.id_conta;
   const id_adm = req.query.id_adm;
   const esporadico = req.query.esporadico;
@@ -46,14 +47,15 @@ exports.findAll = (req, res) => {
 
   var conditionIdPagamento = id_pagamento ? { id_pagamento: { [Op.eq]: `${id_pagamento}` } } : null;
   var conditionValor = valor ? { valor: { [Op.eq]: `${valor}` } } : null;
-  var conditionDataPagamento = data_pagamento ? { data_pagamento: { [Op.lte]: `${data_pagamento}` } } : null;
+  var conditionDataPagamentoMenor = data_pagamento_menor ? { data_pagamento: { [Op.lte]: `${data_pagamento_menor}` } } : null;
+  var conditionDataPagamentoMaior = data_pagamento_maior ? { data_pagamento: { [Op.gte]: `${data_pagamento_maior}` } } : null;
   var conditionIdConta = id_conta ? { id_conta: { [Op.eq]: `${id_conta}` } } : null;
   var conditionAdm = id_adm ? { id_adm: { [Op.eq]: `${id_adm}` } } : null;
   var conditionEsporadico = esporadico ? { esporadico: { [Op.eq]: `${esporadico}` } } : null;
   var conditionObservacao = observacao ? { observacao: { [Op.like]: `%${observacao}%` } } : null;
 
   Pagamento.findAll({ where: {
-    [Op.and]: [conditionIdPagamento, conditionValor, conditionAdm, conditionDataPagamento, conditionIdConta, conditionEsporadico, conditionObservacao]
+    [Op.and]: [conditionIdPagamento, conditionValor, conditionAdm, conditionDataPagamentoMenor, conditionDataPagamentoMaior, conditionIdConta, conditionEsporadico, conditionObservacao]
   },
   order: [[`${orderBy}`, `${order}`]],
   limit: req.query.rows,

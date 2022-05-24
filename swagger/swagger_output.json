@@ -2655,7 +2655,12 @@
             "type": "string"
           },
           {
-            "name": "data_pagamento",
+            "name": "data_pagamento_maior",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "data_pagamento_menor",
             "in": "query",
             "type": "string"
           },
