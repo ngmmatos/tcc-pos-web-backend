@@ -27,8 +27,9 @@ exports.create = (req, res) => {
 exports.findAll = (req, res) => {
   const id_conta = req.query.id_conta;
   const valor = req.query.valor;
-  const dt_pagamento = req.query.dt_pagamento;
-  const dt_vencimento = req.query.dt_vencimento;
+  const dt_pagamento = req.query.dt_pagamento;zz
+  const dt_vencimento_menor = req.query.dt_venciment_menor;
+  const dt_vencimento_maior = req.query.dt_venciment_maior;
   const descricao = req.query.descricao;
   var order = req.query.order;
   var orderBy= req.query.orderBy
@@ -41,11 +42,12 @@ exports.findAll = (req, res) => {
   var conditionIdConta = id_conta ? { id_conta: { [Op.eq]: `${id_conta}` } } : null;
   var conditionValor = valor ? { valor: { [Op.eq]: `${valor}` } } : null;
   var conditionDtPagamento = dt_pagamento ? { dt_pagamento: { [Op.lte]: `${dt_pagamento}` } } : null;
-  var conditionDtVencimento = dt_vencimento ? { dt_vencimento: { [Op.lte]: `${dt_vencimento}` } } : null;
+  var conditionDataVencimentoMenor = dt_vencimento_menor ? { dt_vencimento: { [Op.lte]: `${dt_vencimento_menor}` } } : null;
+  var conditionDataVencimentoMaior = dt_vencimento_maior ? { dt_vencimento: { [Op.gte]: `${dt_vencimento_maior}` } } : null;
   var conditionIdDescricao = descricao ? { descricao: { [Op.like]: `%${descricao}%` } } : null;
 
   Conta.findAll({ where: {
-    [Op.and]: [conditionIdConta, conditionValor, conditionDtPagamento, conditionIdDescricao, conditionDtVencimento]
+    [Op.and]: [conditionIdConta, conditionValor, conditionDtPagamento, conditionIdDescricao, conditionDataVencimentoMenor, conditionDataVencimentoMaior]
   },
   order: [[`${orderBy}`, `${order}`]],
   limit: req.query.rows
