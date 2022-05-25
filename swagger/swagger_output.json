@@ -906,6 +906,11 @@
             "type": "string"
           },
           {
+            "name": "data_realizacao_maior",   
+            "in": "query",
+            "type": "string"
+          },
+          {
             "name": "data_agendamento",
             "in": "query",
             "type": "string"
