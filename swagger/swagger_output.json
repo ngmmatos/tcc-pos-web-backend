@@ -1147,6 +1147,16 @@
             "type": "string"
           },
           {
+            "name": "data_fim_maior",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "data_fim_menor",
+            "in": "query",
+            "type": "string"
+          },
+          {
             "name": "order",
             "in": "query",
             "type": "string"

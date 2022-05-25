@@ -39,6 +39,8 @@ exports.findAll = (req, res) => {
   const valor = req.query.valor;
   const data_inicio = req.query.data_inicio;
   const data_fim = req.query.data_fim;
+  const data_fim_maior = req.query.data_fim_maior;
+  const data_fim_menor = req.query.data_fim_menor;
   const id_barbeiro = req.query.id_barbeiro;
   var order = req.query.order;
   var orderBy= req.query.orderBy
@@ -54,10 +56,14 @@ exports.findAll = (req, res) => {
   var conditionValor = valor ? { valor: { [Op.eq]: `${valor}` } } : null;
   var conditionDataInicio = data_inicio ? { data_inicio: { [Op.gte]: `${data_inicio}` } } : null;
   var conditionDataFim = data_fim ? { data_fim: { [Op.lte]: `${data_fim}` } } : null;
+
+  var conditionDataFimMenor = data_fim_menor ? { data_fim: { [Op.lte]: `${data_fim_menor}` } } : null;
+  var conditionDataFimMaior = data_fim_maior ? { data_fim: { [Op.gte]: `${data_fim_maior}` } } : null;
+
   var conditionBarbeiro = id_barbeiro ? { '$Agendamento.Agenda.id_barbeiro$': { [Op.eq]: `${id_barbeiro}` } } : null;
 
   Atendimento.findAll({ where: {
-    [Op.and]: [conditionAtendimento, conditionIdAgendamento, conditionStatusAtendimento, conditionValor, conditionDataInicio, conditionDataFim, conditionBarbeiro]
+    [Op.and]: [conditionDataFimMenor, conditionDataFimMaior, conditionAtendimento, conditionIdAgendamento, conditionStatusAtendimento, conditionValor, conditionDataInicio, conditionDataFim, conditionBarbeiro]
   },
   order: [[`${orderBy}`, `${order}`]],
   limit: req.query.rows,
